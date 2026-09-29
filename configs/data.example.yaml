@@ -1,0 +1,13 @@
+# Example Ultralytics dataset definition after running script 12.
+# The generated data.yaml uses an absolute `path` for the current machine.
+path: ../data/processed/DTLD_YOLO_4class
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: red
+  1: yellow
+  2: green
+  3: red_yellow
+

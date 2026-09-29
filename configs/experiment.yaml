@@ -1,0 +1,86 @@
+experiment:
+  title_ko: "합성 열화 조건에서 YOLO 기반 신호등 탐지의 시간적 강건성 평가"
+  software:
+    ultralytics: "8.4.108"
+
+dataset:
+  name: "DriveU Traffic Light Dataset (DTLD)"
+  annotation_version: "2.0"
+  classes: [red, yellow, green, red_yellow]
+  conversion:
+    input: "16-bit TIFF"
+    output: "8-bit single-channel PNG"
+  split:
+    unit: "route"
+    overlap_between_splits: false
+    routes:
+      train: 34
+      validation: 4
+      test: 5
+    images:
+      train: 32699
+      validation: 4035
+      test: 4244
+
+models: [yolov8n, yolo11n, yolo12n]
+
+training:
+  pretrained: "COCO"
+  image_size: 1280
+  batch_size: 4
+  max_epochs: 50
+  early_stopping_patience: 10
+  optimizer: "AdamW"
+  initial_learning_rate: 0.00125
+  weight_decay: 0.0005
+  seed: 42
+  deterministic: true
+  amp: true
+  cache: false
+  device: 0
+  workers: 2
+
+degradation:
+  weight_finetuning_per_condition: false
+  same_parameters_for_every_frame_in_sequence: true
+  fog_alpha:
+    l1: 0.15
+    l2: 0.30
+    l3: 0.45
+  low_light_gamma:
+    l1: 1.4
+    l2: 2.0
+    l3: 2.8
+  horizontal_motion_blur_kernel_px:
+    l1: 3
+    l2: 7
+    l3: 11
+
+prediction_export:
+  confidence: 0.01
+  nms_iou: 0.70
+  max_detections: 300
+
+temporal_metrics:
+  confidence: 0.25
+  matching_iou: 0.50
+  stable_detection_window_seconds: 2.0
+  stable_detection_success_rate: 0.80
+  minimum_observations: 3
+  maximum_observation_gap_seconds: 2.0
+  auc_horizon_seconds: 5.0
+
+sensitivity:
+  confidence: [0.10, 0.25, 0.50]
+  matching_iou: [0.30, 0.40, 0.50]
+  stable_detection_window_seconds: [1.0, 2.0, 3.0]
+
+statistics:
+  cluster_unit: "driving sequence"
+  test: "two-sided sequence-cluster sign-flip"
+  sign_flip_permutation_iterations: 100000
+  multiplicity_correction: "Holm"
+  permutation_base_seed: 42
+  bit_generator: "PCG64"
+  seed_scheme: "SeedSequence([base_seed, analysis_code, metric_code, condition_index, model_pair_index])"
+  correction_families: "direct and Clean-change, separately by metric"

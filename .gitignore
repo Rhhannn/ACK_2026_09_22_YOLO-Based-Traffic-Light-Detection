@@ -1,0 +1,40 @@
+# Registered DTLD data and all derived image/label sets
+data/
+
+# Recomputed training, inference, and analysis outputs
+outputs/
+runs/
+
+# Model checkpoints are distributed separately, if permitted
+weights/*.pt
+*.pt
+*.pth
+
+# Large intermediate predictions and caches
+*.jsonl
+*.jsonl.tmp
+*.cache
+*.temporary
+*.tmp
+
+# Python environments and caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local archives and presentation/manuscript exports
+*.zip
+*.7z
+*.pptx
+*.pdf
+

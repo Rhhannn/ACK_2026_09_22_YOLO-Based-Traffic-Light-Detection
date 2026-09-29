@@ -1,0 +1,1596 @@
+{
+  "primary_settings": {
+    "confidence": 0.25,
+    "iou": 0.5,
+    "window_seconds": 2.0
+  },
+  "auc5_sensitivity": [
+    {
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "confidence": 0.1,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 34.6225070843499,
+      "stable_rate_percent": 57.37327188940092
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "confidence": 0.1,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 44.267853449017224,
+      "stable_rate_percent": 64.74654377880184
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "confidence": 0.1,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 38.41188228624759,
+      "stable_rate_percent": 58.755760368663594
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 26.5837648387329,
+      "stable_rate_percent": 46.31336405529954
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 35.69657247736708,
+      "stable_rate_percent": 56.22119815668203
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 30.82650465899348,
+      "stable_rate_percent": 50.69124423963134
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "confidence": 0.5,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 15.106868623039139,
+      "stable_rate_percent": 32.48847926267281
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "confidence": 0.5,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 21.731280390568042,
+      "stable_rate_percent": 41.935483870967744
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "confidence": 0.5,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 17.009043924270138,
+      "stable_rate_percent": 36.175115207373274
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.3,
+      "confidence": 0.25,
+      "iou": 0.3,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 26.977435026300686,
+      "stable_rate_percent": 47.004608294930875
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.3,
+      "confidence": 0.25,
+      "iou": 0.3,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 35.863230755801595,
+      "stable_rate_percent": 56.22119815668203
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.3,
+      "confidence": 0.25,
+      "iou": 0.3,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 31.055593402704336,
+      "stable_rate_percent": 50.69124423963134
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.4,
+      "confidence": 0.25,
+      "iou": 0.4,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 26.977435026300686,
+      "stable_rate_percent": 47.004608294930875
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.4,
+      "confidence": 0.25,
+      "iou": 0.4,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 35.863230755801595,
+      "stable_rate_percent": 56.22119815668203
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.4,
+      "confidence": 0.25,
+      "iou": 0.4,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 31.034179766606627,
+      "stable_rate_percent": 50.69124423963134
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.5,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 26.5837648387329,
+      "stable_rate_percent": 46.31336405529954
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.5,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 35.69657247736708,
+      "stable_rate_percent": 56.22119815668203
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.5,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 30.82650465899348,
+      "stable_rate_percent": 50.69124423963134
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "window",
+      "parameter_value": 1.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 1.0,
+      "model": "yolov8n",
+      "eligible_tracks": 301,
+      "auc5": 30.886248607572114,
+      "stable_rate_percent": 50.83056478405316
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "window",
+      "parameter_value": 1.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 1.0,
+      "model": "yolo11n",
+      "eligible_tracks": 301,
+      "auc5": 36.05934648418744,
+      "stable_rate_percent": 58.80398671096346
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "window",
+      "parameter_value": 1.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 1.0,
+      "model": "yolo12n",
+      "eligible_tracks": 301,
+      "auc5": 33.15683651604132,
+      "stable_rate_percent": 55.48172757475083
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "window",
+      "parameter_value": 2.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 26.5837648387329,
+      "stable_rate_percent": 46.31336405529954
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "window",
+      "parameter_value": 2.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 35.69657247736708,
+      "stable_rate_percent": 56.22119815668203
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "window",
+      "parameter_value": 2.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 30.82650465899348,
+      "stable_rate_percent": 50.69124423963134
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "window",
+      "parameter_value": 3.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 3.0,
+      "model": "yolov8n",
+      "eligible_tracks": 398,
+      "auc5": 25.789916299695356,
+      "stable_rate_percent": 43.46733668341709
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "window",
+      "parameter_value": 3.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 3.0,
+      "model": "yolo11n",
+      "eligible_tracks": 398,
+      "auc5": 32.98395031061603,
+      "stable_rate_percent": 49.74874371859296
+    },
+    {
+      "condition": "fog_l3",
+      "parameter_family": "window",
+      "parameter_value": 3.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 3.0,
+      "model": "yolo12n",
+      "eligible_tracks": 398,
+      "auc5": 27.233948899273905,
+      "stable_rate_percent": 43.969849246231156
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "confidence": 0.1,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 37.09036912786248,
+      "stable_rate_percent": 52.07373271889401
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "confidence": 0.1,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 41.129383689247526,
+      "stable_rate_percent": 58.064516129032256
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "confidence": 0.1,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 37.14767879055392,
+      "stable_rate_percent": 55.06912442396313
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 27.44222554193664,
+      "stable_rate_percent": 41.474654377880185
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 33.080740853938096,
+      "stable_rate_percent": 48.617511520737324
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 28.781607799266357,
+      "stable_rate_percent": 46.54377880184332
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "confidence": 0.5,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 17.59022896190942,
+      "stable_rate_percent": 29.953917050691246
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "confidence": 0.5,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 20.685987516482307,
+      "stable_rate_percent": 34.7926267281106
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "confidence": 0.5,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 16.925072878736504,
+      "stable_rate_percent": 32.48847926267281
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.3,
+      "confidence": 0.25,
+      "iou": 0.3,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 28.6710571583515,
+      "stable_rate_percent": 42.3963133640553
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.3,
+      "confidence": 0.25,
+      "iou": 0.3,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 34.36390183488346,
+      "stable_rate_percent": 49.07834101382488
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.3,
+      "confidence": 0.25,
+      "iou": 0.3,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 30.40527562391923,
+      "stable_rate_percent": 47.465437788018434
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.4,
+      "confidence": 0.25,
+      "iou": 0.4,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 28.397838432118643,
+      "stable_rate_percent": 42.3963133640553
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.4,
+      "confidence": 0.25,
+      "iou": 0.4,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 34.10455976213728,
+      "stable_rate_percent": 48.8479262672811
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.4,
+      "confidence": 0.25,
+      "iou": 0.4,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 30.1811246058908,
+      "stable_rate_percent": 47.465437788018434
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.5,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 27.44222554193664,
+      "stable_rate_percent": 41.474654377880185
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.5,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 33.080740853938096,
+      "stable_rate_percent": 48.617511520737324
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.5,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 28.781607799266357,
+      "stable_rate_percent": 46.54377880184332
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "window",
+      "parameter_value": 1.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 1.0,
+      "model": "yolov8n",
+      "eligible_tracks": 301,
+      "auc5": 31.116141892746832,
+      "stable_rate_percent": 46.51162790697674
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "window",
+      "parameter_value": 1.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 1.0,
+      "model": "yolo11n",
+      "eligible_tracks": 301,
+      "auc5": 35.325296978617835,
+      "stable_rate_percent": 52.49169435215947
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "window",
+      "parameter_value": 1.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 1.0,
+      "model": "yolo12n",
+      "eligible_tracks": 301,
+      "auc5": 30.56420367421503,
+      "stable_rate_percent": 49.16943521594684
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "window",
+      "parameter_value": 2.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 27.44222554193664,
+      "stable_rate_percent": 41.474654377880185
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "window",
+      "parameter_value": 2.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 33.080740853938096,
+      "stable_rate_percent": 48.617511520737324
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "window",
+      "parameter_value": 2.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 28.781607799266357,
+      "stable_rate_percent": 46.54377880184332
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "window",
+      "parameter_value": 3.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 3.0,
+      "model": "yolov8n",
+      "eligible_tracks": 398,
+      "auc5": 26.45196690631273,
+      "stable_rate_percent": 36.93467336683417
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "window",
+      "parameter_value": 3.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 3.0,
+      "model": "yolo11n",
+      "eligible_tracks": 398,
+      "auc5": 29.872343420383327,
+      "stable_rate_percent": 42.462311557788944
+    },
+    {
+      "condition": "lowlight_l3",
+      "parameter_family": "window",
+      "parameter_value": 3.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 3.0,
+      "model": "yolo12n",
+      "eligible_tracks": 398,
+      "auc5": 26.569488755422622,
+      "stable_rate_percent": 40.95477386934673
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "confidence": 0.1,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 24.130785816825483,
+      "stable_rate_percent": 49.53917050691244
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "confidence": 0.1,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 27.75900946234778,
+      "stable_rate_percent": 54.83870967741935
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "confidence": 0.1,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 17.44053527506815,
+      "stable_rate_percent": 43.54838709677419
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 16.23561299890965,
+      "stable_rate_percent": 37.096774193548384
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 18.92753879046111,
+      "stable_rate_percent": 43.77880184331797
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 11.180099331288837,
+      "stable_rate_percent": 33.41013824884793
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "confidence": 0.5,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 8.14247604888705,
+      "stable_rate_percent": 21.658986175115206
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "confidence": 0.5,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 10.167991159149027,
+      "stable_rate_percent": 31.10599078341014
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "confidence": 0.5,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 6.134417199868761,
+      "stable_rate_percent": 20.506912442396313
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.3,
+      "confidence": 0.25,
+      "iou": 0.3,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 16.562439186781774,
+      "stable_rate_percent": 37.096774193548384
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.3,
+      "confidence": 0.25,
+      "iou": 0.3,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 19.327185615416496,
+      "stable_rate_percent": 44.00921658986175
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.3,
+      "confidence": 0.25,
+      "iou": 0.3,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 11.24432821976973,
+      "stable_rate_percent": 33.41013824884793
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.4,
+      "confidence": 0.25,
+      "iou": 0.4,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 16.499674803650315,
+      "stable_rate_percent": 37.096774193548384
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.4,
+      "confidence": 0.25,
+      "iou": 0.4,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 19.219620271761848,
+      "stable_rate_percent": 44.00921658986175
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.4,
+      "confidence": 0.25,
+      "iou": 0.4,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 11.24432821976973,
+      "stable_rate_percent": 33.41013824884793
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.5,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 16.23561299890965,
+      "stable_rate_percent": 37.096774193548384
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.5,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 18.92753879046111,
+      "stable_rate_percent": 43.77880184331797
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.5,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 11.180099331288837,
+      "stable_rate_percent": 33.41013824884793
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "window",
+      "parameter_value": 1.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 1.0,
+      "model": "yolov8n",
+      "eligible_tracks": 301,
+      "auc5": 22.03738434370173,
+      "stable_rate_percent": 48.17275747508306
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "window",
+      "parameter_value": 1.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 1.0,
+      "model": "yolo11n",
+      "eligible_tracks": 301,
+      "auc5": 23.106586830164503,
+      "stable_rate_percent": 54.15282392026578
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "window",
+      "parameter_value": 1.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 1.0,
+      "model": "yolo12n",
+      "eligible_tracks": 301,
+      "auc5": 16.528024974455466,
+      "stable_rate_percent": 46.51162790697674
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "window",
+      "parameter_value": 2.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolov8n",
+      "eligible_tracks": 434,
+      "auc5": 16.23561299890965,
+      "stable_rate_percent": 37.096774193548384
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "window",
+      "parameter_value": 2.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo11n",
+      "eligible_tracks": 434,
+      "auc5": 18.92753879046111,
+      "stable_rate_percent": 43.77880184331797
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "window",
+      "parameter_value": 2.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 2.0,
+      "model": "yolo12n",
+      "eligible_tracks": 434,
+      "auc5": 11.180099331288837,
+      "stable_rate_percent": 33.41013824884793
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "window",
+      "parameter_value": 3.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 3.0,
+      "model": "yolov8n",
+      "eligible_tracks": 398,
+      "auc5": 12.240972447035903,
+      "stable_rate_percent": 27.63819095477387
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "window",
+      "parameter_value": 3.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 3.0,
+      "model": "yolo11n",
+      "eligible_tracks": 398,
+      "auc5": 14.885826086878174,
+      "stable_rate_percent": 33.66834170854271
+    },
+    {
+      "condition": "motionblur_l3",
+      "parameter_family": "window",
+      "parameter_value": 3.0,
+      "confidence": 0.25,
+      "iou": 0.5,
+      "window_seconds": 3.0,
+      "model": "yolo12n",
+      "eligible_tracks": 398,
+      "auc5": 7.196661683183221,
+      "stable_rate_percent": 22.110552763819097
+    }
+  ],
+  "red_duration_sensitivity": [
+    {
+      "condition": "fog_l3",
+      "confidence": 0.1,
+      "model": "yolov8n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 2.331892551797809
+    },
+    {
+      "condition": "fog_l3",
+      "confidence": 0.25,
+      "model": "yolov8n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 2.816768280183426
+    },
+    {
+      "condition": "fog_l3",
+      "confidence": 0.5,
+      "model": "yolov8n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 3.627055451123401
+    },
+    {
+      "condition": "fog_l3",
+      "confidence": 0.1,
+      "model": "yolo11n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 1.8570858143796825
+    },
+    {
+      "condition": "fog_l3",
+      "confidence": 0.25,
+      "model": "yolo11n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 2.258902812244916
+    },
+    {
+      "condition": "fog_l3",
+      "confidence": 0.5,
+      "model": "yolo11n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 3.0803463061650596
+    },
+    {
+      "condition": "fog_l3",
+      "confidence": 0.1,
+      "model": "yolo12n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 2.1945534511045977
+    },
+    {
+      "condition": "fog_l3",
+      "confidence": 0.25,
+      "model": "yolo12n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 2.706131012752803
+    },
+    {
+      "condition": "fog_l3",
+      "confidence": 0.5,
+      "model": "yolo12n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 3.5985417161325013
+    },
+    {
+      "condition": "lowlight_l3",
+      "confidence": 0.1,
+      "model": "yolov8n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 2.3614322224048654
+    },
+    {
+      "condition": "lowlight_l3",
+      "confidence": 0.25,
+      "model": "yolov8n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 2.983807112231399
+    },
+    {
+      "condition": "lowlight_l3",
+      "confidence": 0.5,
+      "model": "yolov8n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 3.848098970422841
+    },
+    {
+      "condition": "lowlight_l3",
+      "confidence": 0.1,
+      "model": "yolo11n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 2.3196680244773327
+    },
+    {
+      "condition": "lowlight_l3",
+      "confidence": 0.25,
+      "model": "yolo11n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 2.8243403519042816
+    },
+    {
+      "condition": "lowlight_l3",
+      "confidence": 0.5,
+      "model": "yolo11n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 3.5518691335061585
+    },
+    {
+      "condition": "lowlight_l3",
+      "confidence": 0.1,
+      "model": "yolo12n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 2.317674094980413
+    },
+    {
+      "condition": "lowlight_l3",
+      "confidence": 0.25,
+      "model": "yolo12n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 2.9738484488593206
+    },
+    {
+      "condition": "lowlight_l3",
+      "confidence": 0.5,
+      "model": "yolo12n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 3.84685926967197
+    },
+    {
+      "condition": "motionblur_l3",
+      "confidence": 0.1,
+      "model": "yolov8n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 3.3874038373581086
+    },
+    {
+      "condition": "motionblur_l3",
+      "confidence": 0.25,
+      "model": "yolov8n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 3.8820292997841883
+    },
+    {
+      "condition": "motionblur_l3",
+      "confidence": 0.5,
+      "model": "yolov8n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 4.440164019363095
+    },
+    {
+      "condition": "motionblur_l3",
+      "confidence": 0.1,
+      "model": "yolo11n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 2.943111879657013
+    },
+    {
+      "condition": "motionblur_l3",
+      "confidence": 0.25,
+      "model": "yolo11n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 3.5939546173269097
+    },
+    {
+      "condition": "motionblur_l3",
+      "confidence": 0.5,
+      "model": "yolo11n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 4.241388130669642
+    },
+    {
+      "condition": "motionblur_l3",
+      "confidence": 0.1,
+      "model": "yolo12n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 3.5962491745900627
+    },
+    {
+      "condition": "motionblur_l3",
+      "confidence": 0.25,
+      "model": "yolo12n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 4.010709769798048
+    },
+    {
+      "condition": "motionblur_l3",
+      "confidence": 0.5,
+      "model": "yolo12n",
+      "red_tracks": 198,
+      "mean_longest_complete_miss_seconds": 4.469494599284547
+    }
+  ],
+  "best_models": [
+    {
+      "metric": "auc5",
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "best_model": "yolo11n",
+      "best_value": 44.267853449017224,
+      "margin_over_second": 5.8559711627696345
+    },
+    {
+      "metric": "auc5",
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "best_model": "yolo11n",
+      "best_value": 35.69657247736708,
+      "margin_over_second": 4.870067818373599
+    },
+    {
+      "metric": "auc5",
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "best_model": "yolo11n",
+      "best_value": 21.731280390568042,
+      "margin_over_second": 4.722236466297904
+    },
+    {
+      "metric": "auc5",
+      "condition": "fog_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.3,
+      "best_model": "yolo11n",
+      "best_value": 35.863230755801595,
+      "margin_over_second": 4.80763735309726
+    },
+    {
+      "metric": "auc5",
+      "condition": "fog_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.4,
+      "best_model": "yolo11n",
+      "best_value": 35.863230755801595,
+      "margin_over_second": 4.829050989194968
+    },
+    {
+      "metric": "auc5",
+      "condition": "fog_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.5,
+      "best_model": "yolo11n",
+      "best_value": 35.69657247736708,
+      "margin_over_second": 4.870067818373599
+    },
+    {
+      "metric": "auc5",
+      "condition": "fog_l3",
+      "parameter_family": "window",
+      "parameter_value": 1.0,
+      "best_model": "yolo11n",
+      "best_value": 36.05934648418744,
+      "margin_over_second": 2.90250996814612
+    },
+    {
+      "metric": "auc5",
+      "condition": "fog_l3",
+      "parameter_family": "window",
+      "parameter_value": 2.0,
+      "best_model": "yolo11n",
+      "best_value": 35.69657247736708,
+      "margin_over_second": 4.870067818373599
+    },
+    {
+      "metric": "auc5",
+      "condition": "fog_l3",
+      "parameter_family": "window",
+      "parameter_value": 3.0,
+      "best_model": "yolo11n",
+      "best_value": 32.98395031061603,
+      "margin_over_second": 5.750001411342126
+    },
+    {
+      "metric": "auc5",
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "best_model": "yolo11n",
+      "best_value": 41.129383689247526,
+      "margin_over_second": 3.981704898693607
+    },
+    {
+      "metric": "auc5",
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "best_model": "yolo11n",
+      "best_value": 33.080740853938096,
+      "margin_over_second": 4.299133054671739
+    },
+    {
+      "metric": "auc5",
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "best_model": "yolo11n",
+      "best_value": 20.685987516482307,
+      "margin_over_second": 3.0957585545728854
+    },
+    {
+      "metric": "auc5",
+      "condition": "lowlight_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.3,
+      "best_model": "yolo11n",
+      "best_value": 34.36390183488346,
+      "margin_over_second": 3.9586262109642263
+    },
+    {
+      "metric": "auc5",
+      "condition": "lowlight_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.4,
+      "best_model": "yolo11n",
+      "best_value": 34.10455976213728,
+      "margin_over_second": 3.9234351562464767
+    },
+    {
+      "metric": "auc5",
+      "condition": "lowlight_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.5,
+      "best_model": "yolo11n",
+      "best_value": 33.080740853938096,
+      "margin_over_second": 4.299133054671739
+    },
+    {
+      "metric": "auc5",
+      "condition": "lowlight_l3",
+      "parameter_family": "window",
+      "parameter_value": 1.0,
+      "best_model": "yolo11n",
+      "best_value": 35.325296978617835,
+      "margin_over_second": 4.209155085871004
+    },
+    {
+      "metric": "auc5",
+      "condition": "lowlight_l3",
+      "parameter_family": "window",
+      "parameter_value": 2.0,
+      "best_model": "yolo11n",
+      "best_value": 33.080740853938096,
+      "margin_over_second": 4.299133054671739
+    },
+    {
+      "metric": "auc5",
+      "condition": "lowlight_l3",
+      "parameter_family": "window",
+      "parameter_value": 3.0,
+      "best_model": "yolo11n",
+      "best_value": 29.872343420383327,
+      "margin_over_second": 3.302854664960705
+    },
+    {
+      "metric": "auc5",
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "best_model": "yolo11n",
+      "best_value": 27.75900946234778,
+      "margin_over_second": 3.628223645522297
+    },
+    {
+      "metric": "auc5",
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "best_model": "yolo11n",
+      "best_value": 18.92753879046111,
+      "margin_over_second": 2.6919257915514585
+    },
+    {
+      "metric": "auc5",
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "best_model": "yolo11n",
+      "best_value": 10.167991159149027,
+      "margin_over_second": 2.0255151102619777
+    },
+    {
+      "metric": "auc5",
+      "condition": "motionblur_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.3,
+      "best_model": "yolo11n",
+      "best_value": 19.327185615416496,
+      "margin_over_second": 2.764746428634723
+    },
+    {
+      "metric": "auc5",
+      "condition": "motionblur_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.4,
+      "best_model": "yolo11n",
+      "best_value": 19.219620271761848,
+      "margin_over_second": 2.7199454681115327
+    },
+    {
+      "metric": "auc5",
+      "condition": "motionblur_l3",
+      "parameter_family": "iou",
+      "parameter_value": 0.5,
+      "best_model": "yolo11n",
+      "best_value": 18.92753879046111,
+      "margin_over_second": 2.6919257915514585
+    },
+    {
+      "metric": "auc5",
+      "condition": "motionblur_l3",
+      "parameter_family": "window",
+      "parameter_value": 1.0,
+      "best_model": "yolo11n",
+      "best_value": 23.106586830164503,
+      "margin_over_second": 1.0692024864627712
+    },
+    {
+      "metric": "auc5",
+      "condition": "motionblur_l3",
+      "parameter_family": "window",
+      "parameter_value": 2.0,
+      "best_model": "yolo11n",
+      "best_value": 18.92753879046111,
+      "margin_over_second": 2.6919257915514585
+    },
+    {
+      "metric": "auc5",
+      "condition": "motionblur_l3",
+      "parameter_family": "window",
+      "parameter_value": 3.0,
+      "best_model": "yolo11n",
+      "best_value": 14.885826086878174,
+      "margin_over_second": 2.644853639842271
+    },
+    {
+      "metric": "red_duration",
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "best_model": "yolo11n",
+      "best_value": 1.8570858143796825,
+      "margin_over_second": 0.3374676367249152
+    },
+    {
+      "metric": "red_duration",
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "best_model": "yolo11n",
+      "best_value": 2.258902812244916,
+      "margin_over_second": 0.4472282005078867
+    },
+    {
+      "metric": "red_duration",
+      "condition": "fog_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "best_model": "yolo11n",
+      "best_value": 3.0803463061650596,
+      "margin_over_second": 0.5181954099674417
+    },
+    {
+      "metric": "red_duration",
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "best_model": "yolo12n",
+      "best_value": 2.317674094980413,
+      "margin_over_second": 0.0019939294969195664
+    },
+    {
+      "metric": "red_duration",
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "best_model": "yolo11n",
+      "best_value": 2.8243403519042816,
+      "margin_over_second": 0.14950809695503908
+    },
+    {
+      "metric": "red_duration",
+      "condition": "lowlight_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "best_model": "yolo11n",
+      "best_value": 3.5518691335061585,
+      "margin_over_second": 0.2949901361658114
+    },
+    {
+      "metric": "red_duration",
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.1,
+      "best_model": "yolo11n",
+      "best_value": 2.943111879657013,
+      "margin_over_second": 0.44429195770109553
+    },
+    {
+      "metric": "red_duration",
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.25,
+      "best_model": "yolo11n",
+      "best_value": 3.5939546173269097,
+      "margin_over_second": 0.28807468245727863
+    },
+    {
+      "metric": "red_duration",
+      "condition": "motionblur_l3",
+      "parameter_family": "confidence",
+      "parameter_value": 0.5,
+      "best_model": "yolo11n",
+      "best_value": 4.241388130669642,
+      "margin_over_second": 0.19877588869345342
+    }
+  ],
+  "consistency": [
+    {
+      "metric": "auc5",
+      "parameter_family": "confidence",
+      "model": "yolov8n",
+      "settings_won": 0,
+      "total_settings": 9,
+      "win_rate_percent": 0.0
+    },
+    {
+      "metric": "auc5",
+      "parameter_family": "confidence",
+      "model": "yolo11n",
+      "settings_won": 9,
+      "total_settings": 9,
+      "win_rate_percent": 100.0
+    },
+    {
+      "metric": "auc5",
+      "parameter_family": "confidence",
+      "model": "yolo12n",
+      "settings_won": 0,
+      "total_settings": 9,
+      "win_rate_percent": 0.0
+    },
+    {
+      "metric": "auc5",
+      "parameter_family": "iou",
+      "model": "yolov8n",
+      "settings_won": 0,
+      "total_settings": 9,
+      "win_rate_percent": 0.0
+    },
+    {
+      "metric": "auc5",
+      "parameter_family": "iou",
+      "model": "yolo11n",
+      "settings_won": 9,
+      "total_settings": 9,
+      "win_rate_percent": 100.0
+    },
+    {
+      "metric": "auc5",
+      "parameter_family": "iou",
+      "model": "yolo12n",
+      "settings_won": 0,
+      "total_settings": 9,
+      "win_rate_percent": 0.0
+    },
+    {
+      "metric": "auc5",
+      "parameter_family": "window",
+      "model": "yolov8n",
+      "settings_won": 0,
+      "total_settings": 9,
+      "win_rate_percent": 0.0
+    },
+    {
+      "metric": "auc5",
+      "parameter_family": "window",
+      "model": "yolo11n",
+      "settings_won": 9,
+      "total_settings": 9,
+      "win_rate_percent": 100.0
+    },
+    {
+      "metric": "auc5",
+      "parameter_family": "window",
+      "model": "yolo12n",
+      "settings_won": 0,
+      "total_settings": 9,
+      "win_rate_percent": 0.0
+    },
+    {
+      "metric": "red_duration",
+      "parameter_family": "confidence",
+      "model": "yolov8n",
+      "settings_won": 0,
+      "total_settings": 9,
+      "win_rate_percent": 0.0
+    },
+    {
+      "metric": "red_duration",
+      "parameter_family": "confidence",
+      "model": "yolo11n",
+      "settings_won": 8,
+      "total_settings": 9,
+      "win_rate_percent": 88.88888888888889
+    },
+    {
+      "metric": "red_duration",
+      "parameter_family": "confidence",
+      "model": "yolo12n",
+      "settings_won": 1,
+      "total_settings": 9,
+      "win_rate_percent": 11.11111111111111
+    }
+  ]
+}

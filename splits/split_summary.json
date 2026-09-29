@@ -1,0 +1,116 @@
+{
+  "target_ratios": {
+    "train": 0.8,
+    "val": 0.1,
+    "test": 0.1
+  },
+  "overall_totals": {
+    "image_count": 40978,
+    "red_objects": 19265,
+    "yellow_objects": 2451,
+    "green_objects": 50357,
+    "red_yellow_objects": 1372
+  },
+  "splits": {
+    "train": {
+      "session_count": 34,
+      "sessions": [
+        "Berlin/Berlin2",
+        "Berlin/Berlin3",
+        "Berlin/Berlin4",
+        "Bochum/Bochum1",
+        "Bremen/Bremen1",
+        "Dortmund/Dortmund1",
+        "Dortmund/Dortmund3",
+        "Dortmund/Dortmund5",
+        "Dortmund/Dortmund6",
+        "Duesseldorf/Duesseldorf1",
+        "Duesseldorf/Duesseldorf2",
+        "Duesseldorf/Duesseldorf3",
+        "Duesseldorf/Duesseldorf4",
+        "Duesseldorf/Duesseldorf5",
+        "Essen/Essen1",
+        "Frankfurt/Frankfurt1",
+        "Frankfurt/Frankfurt2",
+        "Frankfurt/Frankfurt3",
+        "Frankfurt/Frankfurt4",
+        "Frankfurt/Frankfurt5",
+        "Fulda/Fulda1",
+        "Hannover/Hannover1",
+        "Hannover/Hannover2",
+        "Hannover/Hannover5",
+        "Hannover/Hannover6",
+        "Kassel/Kassel1",
+        "Kassel/Kassel2",
+        "Kassel/Kassel3",
+        "Kassel/Kassel4",
+        "Kassel/Kassel5",
+        "Koeln/Koeln1",
+        "Koeln/Koeln3",
+        "Koeln/Koeln4",
+        "Koeln/Koeln5"
+      ],
+      "totals": {
+        "image_count": 32699,
+        "red_objects": 15261,
+        "yellow_objects": 1970,
+        "green_objects": 40190,
+        "red_yellow_objects": 1102
+      },
+      "ratios": {
+        "image_count": 0.797964761579384,
+        "red_objects": 0.7921619517259278,
+        "yellow_objects": 0.8037535699714402,
+        "green_objects": 0.798101554898028,
+        "red_yellow_objects": 0.8032069970845481
+      }
+    },
+    "val": {
+      "session_count": 4,
+      "sessions": [
+        "Berlin/Berlin1",
+        "Dortmund/Dortmund2",
+        "Dortmund/Dortmund4",
+        "Hannover/Hannover3"
+      ],
+      "totals": {
+        "image_count": 4035,
+        "red_objects": 1910,
+        "yellow_objects": 237,
+        "green_objects": 5294,
+        "red_yellow_objects": 136
+      },
+      "ratios": {
+        "image_count": 0.09846747034994387,
+        "red_objects": 0.0991435245263431,
+        "yellow_objects": 0.0966952264381885,
+        "green_objects": 0.10512937625354965,
+        "red_yellow_objects": 0.09912536443148688
+      }
+    },
+    "test": {
+      "session_count": 5,
+      "sessions": [
+        "Essen/Essen2",
+        "Essen/Essen3",
+        "Fulda/Fulda2",
+        "Hannover/Hannover4",
+        "Koeln/Koeln2"
+      ],
+      "totals": {
+        "image_count": 4244,
+        "red_objects": 2094,
+        "yellow_objects": 244,
+        "green_objects": 4873,
+        "red_yellow_objects": 134
+      },
+      "ratios": {
+        "image_count": 0.10356776807067207,
+        "red_objects": 0.10869452374772905,
+        "yellow_objects": 0.09955120359037127,
+        "green_objects": 0.09676906884842226,
+        "red_yellow_objects": 0.09766763848396501
+      }
+    }
+  }
+}

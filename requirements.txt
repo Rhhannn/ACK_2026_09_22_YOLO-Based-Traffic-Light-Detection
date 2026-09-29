@@ -1,0 +1,7 @@
+# Install the PyTorch build appropriate for your CUDA driver first:
+# https://pytorch.org/get-started/locally/
+ultralytics==8.4.108
+numpy>=1.26,<3
+Pillow>=10,<13
+opencv-python>=4.8,<5
+
