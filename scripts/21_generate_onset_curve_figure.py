@@ -13,12 +13,13 @@ INPUT_CSV = (
     RESULTS_ROOT
     / "temporal"
     / "track_metrics"
-    / "stability_track_metrics_corrected.csv"
+    / "stable_detection_onset_per_track.csv"
 )
 OUTPUT_SVG = (
     REPOSITORY_ROOT
     / "figures"
-    / "fig4_stable_detection_onset_curves_linear_no_ci.svg"
+    / "paper"
+    / "stable-detection-onset-curves.svg"
 )
 
 MODELS = ("yolov8n", "yolo11n", "yolo12n")

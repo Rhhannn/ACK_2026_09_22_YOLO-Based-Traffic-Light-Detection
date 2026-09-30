@@ -30,12 +30,12 @@ def load_script(module_name: str, relative_path: str):
 
 
 temporal = load_script(
-    "corrected_temporal_metrics_for_tests",
-    "temporal_analysis/45_recalculate_corrected_temporal_metrics.py",
+    "temporal_metrics_for_tests",
+    "scripts/18_compute_temporal_metrics.py",
 )
 clustered = load_script(
     "sequence_clustered_statistics_for_tests",
-    "temporal_analysis/48_sequence_clustered_temporal_statistics.py",
+    "scripts/20_run_sequence_clustered_statistics.py",
 )
 # The fog transform under test does not use OpenCV.  A minimal import stub lets
 # this unit test run in CPU-only review environments before optional OpenCV is
@@ -47,7 +47,7 @@ except ModuleNotFoundError:
 
 degradation = load_script(
     "degraded_test_sets_for_tests",
-    "data_preparation/33_build_degraded_test_sets.py",
+    "scripts/14_build_degraded_test_sets.py",
 )
 
 

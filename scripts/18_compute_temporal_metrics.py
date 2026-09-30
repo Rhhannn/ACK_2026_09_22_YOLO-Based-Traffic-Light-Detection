@@ -11,7 +11,7 @@ from pathlib import Path
 from common.project_paths import OUTPUTS_ROOT, REPOSITORY_ROOT
 
 PROJECT_ROOT = REPOSITORY_ROOT
-BASE_SCRIPT = PROJECT_ROOT / "temporal_analysis" / "25_analyze_temporal_metrics.py"
+BASE_SCRIPT = PROJECT_ROOT / "common" / "temporal_metrics_core.py"
 
 CLEAN_PREDICTION_ROOT = OUTPUTS_ROOT / "temporal_predictions"
 DEGRADED_PREDICTION_ROOT = (
@@ -19,8 +19,8 @@ DEGRADED_PREDICTION_ROOT = (
 )
 OUTPUT_ROOT = Path(
     os.environ.get(
-        "DTLD_CORRECTED_TEMPORAL_OUTPUT_ROOT",
-        str(OUTPUTS_ROOT / "corrected_temporal_analysis"),
+        "DTLD_TEMPORAL_OUTPUT_ROOT",
+        str(OUTPUTS_ROOT / "temporal_analysis"),
     )
 )
 
@@ -50,7 +50,7 @@ REPORT_TIMES = (0.0, 1.0, 2.0, 3.0, 5.0)
 
 def load_base_module():
     spec = importlib.util.spec_from_file_location(
-        "corrected_temporal_base",
+        "temporal_metrics_core_runtime",
         BASE_SCRIPT,
     )
     module = importlib.util.module_from_spec(spec)
@@ -484,11 +484,11 @@ def main():
                 key = f"cumulative_rate_t{int(report_time)}_percent"
                 target[key] = rate
 
-    summary_path = OUTPUT_ROOT / "primary_temporal_summary_corrected.csv"
-    stability_path = OUTPUT_ROOT / "stability_track_metrics_corrected.csv"
-    red_path = OUTPUT_ROOT / "red_track_metrics_corrected.csv"
-    audit_path = OUTPUT_ROOT / "old_vs_corrected_audit.csv"
-    json_path = OUTPUT_ROOT / "corrected_temporal_analysis.json"
+    summary_path = OUTPUT_ROOT / "temporal_metrics_all_conditions.csv"
+    stability_path = OUTPUT_ROOT / "stable_detection_onset_per_track.csv"
+    red_path = OUTPUT_ROOT / "red_miss_metrics_per_track.csv"
+    audit_path = OUTPUT_ROOT / "definition_revision_audit.csv"
+    json_path = OUTPUT_ROOT / "temporal_metrics.json"
 
     audit_rows = make_audit_rows(summaries)
     write_csv(summary_path, summaries)
@@ -527,7 +527,7 @@ def main():
     print(f"Summary: {summary_path}")
     print(f"Track stability: {stability_path}")
     print(f"Red tracks: {red_path}")
-    print(f"Old-vs-corrected audit: {audit_path}")
+    print(f"Definition-revision audit: {audit_path}")
     print(f"JSON: {json_path}")
     print("=" * 118)
 

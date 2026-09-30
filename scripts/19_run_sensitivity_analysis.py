@@ -9,17 +9,17 @@ from pathlib import Path
 from common.project_paths import OUTPUTS_ROOT, REPOSITORY_ROOT
 
 PROJECT_ROOT = REPOSITORY_ROOT
-CORRECTION_SCRIPT = (
+TEMPORAL_METRICS_SCRIPT = (
     PROJECT_ROOT
-    / "temporal_analysis"
-    / "45_recalculate_corrected_temporal_metrics.py"
+    / "scripts"
+    / "18_compute_temporal_metrics.py"
 )
 OUTPUT_ROOT = Path(
     os.environ.get(
-        "DTLD_CORRECTED_SENSITIVITY_OUTPUT_ROOT",
+        "DTLD_SENSITIVITY_OUTPUT_ROOT",
         str(
             OUTPUTS_ROOT
-            / "corrected_temporal_analysis"
+            / "temporal_analysis"
             / "sensitivity"
         ),
     )
@@ -41,8 +41,8 @@ WINDOW_VALUES = (1.0, 2.0, 3.0)
 
 def load_correction_module():
     spec = importlib.util.spec_from_file_location(
-        "corrected_temporal_functions",
-        CORRECTION_SCRIPT,
+        "primary_temporal_metrics_runtime",
+        TEMPORAL_METRICS_SCRIPT,
     )
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
@@ -421,11 +421,13 @@ def main():
     best_rows = auc_best + red_best
     consistency = make_consistency_summary(best_rows)
 
-    auc_path = OUTPUT_ROOT / "corrected_auc5_sensitivity.csv"
-    red_path = OUTPUT_ROOT / "corrected_red_duration_sensitivity.csv"
-    best_path = OUTPUT_ROOT / "corrected_best_model_by_setting.csv"
-    consistency_path = OUTPUT_ROOT / "corrected_best_model_consistency.csv"
-    json_path = OUTPUT_ROOT / "corrected_temporal_sensitivity.json"
+    auc_path = OUTPUT_ROOT / "auc5_sensitivity_results.csv"
+    red_path = OUTPUT_ROOT / "red_miss_duration_sensitivity_results.csv"
+    best_path = OUTPUT_ROOT / "best_model_by_sensitivity_setting.csv"
+    consistency_path = (
+        OUTPUT_ROOT / "best_model_consistency_by_parameter_family.csv"
+    )
+    json_path = OUTPUT_ROOT / "temporal_sensitivity_results.json"
 
     write_csv(auc_path, auc_rows)
     write_csv(red_path, red_rows)

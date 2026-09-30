@@ -10,11 +10,11 @@ from common.project_paths import OUTPUTS_ROOT, RESULTS_ROOT
 
 INPUT_ROOT = Path(
     os.environ.get(
-        "DTLD_CORRECTED_TEMPORAL_INPUT_ROOT",
-        str(OUTPUTS_ROOT / "corrected_temporal_analysis"),
+        "DTLD_TEMPORAL_INPUT_ROOT",
+        str(OUTPUTS_ROOT / "temporal_analysis"),
     )
 )
-if not (INPUT_ROOT / "stability_track_metrics_corrected.csv").exists():
+if not (INPUT_ROOT / "stable_detection_onset_per_track.csv").exists():
     INPUT_ROOT = RESULTS_ROOT / "temporal" / "track_metrics"
 OUTPUT_ROOT = Path(
     os.environ.get(
@@ -23,8 +23,8 @@ OUTPUT_ROOT = Path(
     )
 )
 
-STABILITY_CSV = INPUT_ROOT / "stability_track_metrics_corrected.csv"
-RED_CSV = INPUT_ROOT / "red_track_metrics_corrected.csv"
+STABILITY_CSV = INPUT_ROOT / "stable_detection_onset_per_track.csv"
+RED_CSV = INPUT_ROOT / "red_miss_metrics_per_track.csv"
 
 MODELS = ("yolov8n", "yolo11n", "yolo12n")
 MODEL_PAIRS = (
@@ -394,10 +394,10 @@ def main():
     direct = build_direct(stability, red)
     robustness = build_robustness(stability, red)
 
-    summary_path = OUTPUT_ROOT / "sequence_clustered_condition_summary.csv"
-    direct_path = OUTPUT_ROOT / "sequence_clustered_direct_model_comparisons.csv"
-    robustness_path = OUTPUT_ROOT / "sequence_clustered_robustness_comparisons.csv"
-    json_path = OUTPUT_ROOT / "sequence_clustered_statistics.json"
+    summary_path = OUTPUT_ROOT / "sequence_cluster_condition_summary.csv"
+    direct_path = OUTPUT_ROOT / "pairwise_sequence_cluster_tests.csv"
+    robustness_path = OUTPUT_ROOT / "degradation_vs_clean_change_tests.csv"
+    json_path = OUTPUT_ROOT / "sequence_cluster_statistics.json"
 
     write_csv(summary_path, summary)
     write_csv(direct_path, direct)

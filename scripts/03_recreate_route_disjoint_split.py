@@ -142,16 +142,21 @@ def save_results(assignments, overall_totals):
 
     split_totals = calculate_split_totals(assignments)
 
-    # 세션 목록 저장
+    # 경로 목록 저장
+    output_names = {
+        "train": "train_routes.txt",
+        "val": "validation_routes.txt",
+        "test": "test_routes.txt",
+    }
     for split, sessions in assignments.items():
-        output_txt = OUTPUT_DIR / f"{split}_sessions.txt"
+        output_txt = OUTPUT_DIR / output_names[split]
 
         with output_txt.open("w", encoding="utf-8") as file:
             for session in sorted(sessions, key=lambda item: item["session"]):
                 file.write(session["session"] + "\n")
 
     # 전체 분할 정보 JSON 저장
-    output_json = OUTPUT_DIR / "split_summary.json"
+    output_json = OUTPUT_DIR / "route_disjoint_split_summary.json"
 
     result = {
         "target_ratios": TARGET_RATIOS,

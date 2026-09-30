@@ -7,7 +7,7 @@ from ultralytics import YOLO
 
 from common.project_paths import DATA_YAML, MODEL_WEIGHTS, OUTPUTS_ROOT
 
-OUTPUT_ROOT = OUTPUTS_ROOT / "final_test"
+OUTPUT_ROOT = OUTPUTS_ROOT / "clean_evaluation"
 MODELS = MODEL_WEIGHTS
 
 CLASS_NAMES = [
@@ -116,7 +116,7 @@ def main():
         del model
         torch.cuda.empty_cache()
 
-    csv_path = OUTPUT_ROOT / "test_summary.csv"
+    csv_path = OUTPUT_ROOT / "clean_test_framewise_metrics.csv"
 
     with csv_path.open(
         "w",

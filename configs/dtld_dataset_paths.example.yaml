@@ -1,4 +1,4 @@
-# Example Ultralytics dataset definition after running script 12.
+# Example Ultralytics dataset definition after running script 05.
 # The generated data.yaml uses an absolute `path` for the current machine.
 path: ../data/processed/DTLD_YOLO_4class
 train: images/train

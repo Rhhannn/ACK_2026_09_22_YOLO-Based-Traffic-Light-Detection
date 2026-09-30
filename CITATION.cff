@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite the accompanying paper."
 type: software
-title: "Code for Temporal Robustness Evaluation of YOLO-Based Traffic-Light Detection under Synthetic Degradation"
+title: "Code for Temporal Robustness Evaluation of YOLO-Based Traffic-Light Detection under Synthetic Degradations"
 version: 1.0.0
 date-released: 2026-09-29
 authors:
@@ -19,7 +19,7 @@ authors:
     given-names: Younggyun
 preferred-citation:
   type: conference-paper
-  title: "Temporal Robustness Evaluation of YOLO-Based Traffic-Light Detection under Synthetic Degradation"
+  title: "Temporal Robustness Evaluation of YOLO-Based Traffic-Light Detection under Synthetic Degradations"
   authors:
     - family-names: Choi
       given-names: Seungbeom

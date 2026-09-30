@@ -6,7 +6,7 @@ from pathlib import Path
 from common.project_paths import LABEL_JSON, OUTPUTS_ROOT, SPLIT_DIR
 
 JSON_PATH = LABEL_JSON
-TEST_SESSION_PATH = SPLIT_DIR / "test_sessions.txt"
+TEST_SESSION_PATH = SPLIT_DIR / "test_routes.txt"
 OUTPUT_PATH = OUTPUTS_ROOT / "statistics" / "test_sequence_statistics.json"
 
 

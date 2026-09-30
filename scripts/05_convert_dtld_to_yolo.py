@@ -33,13 +33,15 @@ MAX_12BIT_VALUE = 4095.0
 
 
 def load_split_sessions():
+    split_files = {
+        "train": "train_routes.txt",
+        "val": "validation_routes.txt",
+        "test": "test_routes.txt",
+    }
     split_sessions = {}
 
-    for split in ("train", "val", "test"):
-        manifest_path = (
-            SPLIT_MANIFEST_DIR
-            / f"{split}_sessions.txt"
-        )
+    for split, filename in split_files.items():
+        manifest_path = SPLIT_MANIFEST_DIR / filename
 
         with manifest_path.open(
             "r",
