@@ -14,15 +14,20 @@
 
 # 1. 데이터 셋
 
-Occupancy Networks에서 제안된 프로토콜을 통해 전처리된 대규모 3D 객체 데이터 셋 ShapeNet Core 활용
+독일 11개 도시의 실주행 영상 데이터셋 DTLD(DriveU Traffic Light Dataset) 활용
+탐지 대상: Red / Yellow / Green / Red-Yellow
+16-bit TIFF 원본을 동일 기준으로 8-bit 단일채널 PNG로 변환
+연속 프레임의 데이터 누수를 방지하기 위해 주행 경로 단위로 Train / Validation / Test 분할
+분할 간 동일 주행 경로 중복 없음
 
   **Train/Validation/Test**
 
-  > RGB Image : 35024/4378/4381 개 (.jpg), 24개의 시점에서 렌더링 된 객체 이미지
-  >
-  > Ground-Truth : 35024/4378/4381 개 (.npz), 3D 좌표와 물체 내 존재 여부를 나타내는 이진 데이터 쌍
-  >
-  > Camera parameter : 35024/4378/4381 개 (.npz)
+Train : 34 routes / 32,699 images
+Validation : 4 routes / 4,035 images
+Test : 5 routes / 4,244 images
+
+비교 모델 : YOLOv8n · YOLO11n · YOLO12n
+세 모델 모두 동일 데이터 및 학습 조건 적용
   
 # 2. 문제 제기
 
