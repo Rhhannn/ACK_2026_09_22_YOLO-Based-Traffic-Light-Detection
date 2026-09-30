@@ -405,8 +405,6 @@ D_i
 # 관련 자료
 
 - Dataset : <https://www.uni-ulm.de/en/in/iui-drive-u/projekte/driveu-traffic-light-dataset/>
-- DTLD Paper : <https://ieeexplore.ieee.org/document/8460737>
-- Ultralytics YOLO : <https://docs.ultralytics.com/>
-- YOLOv12 : <https://github.com/sunsmarterjie/yolov12>
+- 참고 문헌 : [Reference/참고문헌.md](Reference/참고문헌.md)
 
 ---
