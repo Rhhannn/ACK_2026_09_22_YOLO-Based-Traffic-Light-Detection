@@ -4,6 +4,9 @@
 
 ### Temporal Robustness Evaluation of YOLO-Based Traffic Light Detection under Synthetic Degradations
 
+-저자: 최승범, 설재훈, 김동현, 김재원, 오준석, 김영균
+
+
 - 비교 모델: **YOLOv8n, YOLO11n, YOLO12n**
 - 데이터셋: **DTLD (DriveU Traffic Light Dataset)**
 
