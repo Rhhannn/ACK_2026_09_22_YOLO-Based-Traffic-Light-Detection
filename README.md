@@ -1,4 +1,5 @@
-# 🥇 ACK2026.09.22_합성 열화 조건에서 YOLO 기반 신호등 탐지의 시간적 강건성 평가
+# 🥇 ACK2026.09.22
+#    합성 열화 조건에서 YOLO 기반 신호등 탐지의 시간적 강건성 평가
   
 ---
 ### Temporal Robustness Evaluation of YOLO-Based Traffic Light Detection under Synthetic Degradations
