@@ -405,6 +405,6 @@ D_i
 # 관련 자료
 
 - Dataset : <https://www.uni-ulm.de/en/in/iui-drive-u/projekte/driveu-traffic-light-dataset/>
-- 참고 문헌 : [Reference/참고문헌.md](Reference/참고문헌.md)
+- 참고 문헌 : <https://github.com/Rhhannn/YOLO-Based-Traffic-Light-Detection/blob/main/Reference/참고문헌.md>
 
 ---
