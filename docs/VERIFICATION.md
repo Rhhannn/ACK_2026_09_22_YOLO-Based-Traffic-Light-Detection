@@ -11,6 +11,7 @@
 | 로컬 Markdown 링크·이미지 경로 | 59개 확인, 누락 0개 |
 | 20번 시퀀스 군집 통계 재계산 | 포함된 CSV/JSON 4개와 SHA-256 완전 일치 |
 | 21번 onset curve SVG 재생성 | 포함된 SVG와 SHA-256 완전 일치 |
+| 저장소 manifest | Git 표준 내용 77개와 SHA-256 일치 |
 | 부호반전 반복 수 | 검정당 100,000회 |
 
 통계 재계산에서 일치한 파일:
@@ -53,3 +54,9 @@ python -m scripts.20_run_sequence_clustered_statistics
 
 가중치 파일을 별도로 받을 경우 [`weights/README.md`](../weights/README.md)의 크기와
 SHA-256을 다시 확인해야 합니다.
+
+## Manifest 기준
+
+[`MANIFEST.sha256`](MANIFEST.sha256)은 운영체제별 줄바꿈 변환에 영향을 받지 않도록
+커밋된 Git blob의 표준 바이트를 기준으로 생성했습니다. `.gitattributes`에서 텍스트
+파일의 줄바꿈을 LF로 고정하므로 새 checkout의 파일 해시도 같은 값이 됩니다.
