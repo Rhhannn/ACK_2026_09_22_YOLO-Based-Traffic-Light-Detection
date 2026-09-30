@@ -1,285 +1,132 @@
-# Temporal Robustness Evaluation of YOLO-Based Traffic-Light Detection under Synthetic Degradation
-
-[한국어 안내](README_ko.md)
-
-This repository is the reproducibility package for the paper **“Temporal Robustness Evaluation of YOLO-Based Traffic-Light Detection under Synthetic Degradation.”** It compares YOLOv8n, YOLO11n, and YOLO12n on the DriveU Traffic Light Dataset (DTLD), under clean images and nine synthetic degradation settings.
-
-The repository contains the paper split manifests, data-preparation and evaluation code, compact result tables, and training metadata. It intentionally does **not** contain DTLD images, converted images, synthetically degraded images, per-frame prediction dumps, or model weights.
-
-## What is reported in the paper
-
-- Four circular traffic-light states: `red`, `yellow`, `green`, and `red_yellow`
-- Route-disjoint split: 34 train routes, 4 validation routes, and 5 test routes
-- Images: 32,699 train, 4,035 validation, and 4,244 test
-- Models: YOLOv8n, YOLO11n, and YOLO12n
-- Training: image size 1280, batch size 4, AdamW, initial learning rate 0.00125, weight decay 0.0005, seed 42, deterministic mode, AMP, at most 50 epochs, and early-stopping patience 10
-- Synthetic degradation:
-  - fog alpha: 0.15, 0.30, 0.45
-  - low-light gamma: 1.4, 2.0, 2.8
-  - horizontal motion-blur kernel: 3, 7, 11 pixels
-- Primary temporal settings: confidence 0.25, matching IoU 0.50, 2-second stable-detection window, 80% success threshold, at least 3 observations, maximum 2-second observation gap, and 5-second AUC horizon
-- Sensitivity settings: confidence 0.10/0.25/0.50, IoU 0.30/0.40/0.50, and stable-detection windows of 1/2/3 seconds
-- Final inference: 100,000 two-sided sequence-cluster sign-flip permutations with Holm correction
-
-The two temporal summaries are:
-
-- **AUC5**: normalized area under the cumulative stable-detection-onset curve from 0 to 5 seconds; higher is better.
-- **Mean longest complete red-miss duration** (D-bar): for each track, measure its longest complete run of missed red detections and then average across tracks; lower is better.
-
-## Repository contents
-
-```text
-.
-├── configs/                     # Human-readable experiment and path templates
-├── common/                      # Shared portable path configuration
-├── data_preparation/            # Dataset inspection, conversion, and degradation
-├── figures/                     # Regenerated SVG figures from included metrics
-├── model_evaluation/            # Clean/degraded evaluation and prediction export
-├── model_training/              # YOLOv8n, YOLO11n, and YOLO12n training
-├── results/
-│   ├── framewise/               # Compact clean-test summary
-│   ├── temporal/
-│   │   ├── track_metrics/       # Corrected per-track AUC5/red-miss inputs
-│   │   ├── sensitivity/         # Confidence, IoU, and 1/2/3-second checks
-│   │   └── sequence_clustered/  # Final paper-level clustered inference
-│   └── training_metadata/       # Ultralytics arguments and epoch histories
-├── splits/                      # Exact route lists used in the paper
-├── temporal_analysis/           # AUC5, red-miss, sensitivity, and inference
-├── tests/                       # Regression tests for core metric definitions
-├── visualization/               # Figure-generation code
-├── weights/README.md            # Optional release-asset names and checksums
-├── CODE_STRUCTURE.md            # Full numbered-code map
-├── CITATION.cff
-├── requirements.txt
-├── README.md
-├── README_ko.md
-├── VERIFICATION.md
-└── THIRD_PARTY_NOTICES.md
-```
+# 🥇 ACK2026.09.22
+#    합성 열화 조건에서 YOLO 기반 신호등 탐지의 시간적 강건성 평가
+  
+---
+### Temporal Robustness Evaluation of YOLO-Based Traffic Light Detection under Synthetic Degradations
 
-The checked-in result tables are small verification artifacts, not substitutes for DTLD. They allow the final statistical stage to be inspected without redistributing the dataset or large prediction files.
+- 저자: 최승범, 설재훈, 김동현, 김재원, 오준석, 김영균
 
-## Data access and redistribution
+기존 객체 탐지 평가는 주로 Precision, Recall, mAP와 같은 프레임 단위 지표에 의존한다. 
+그러나 연속 주행 환경에서는 신호등을 얼마나 이른 시점부터 안정적으로 탐지하는지와 중요한 적색 신호를 얼마나 오래 연속으로 놓치는지도 중요하다. 
+본 연구에서는 DTLD 주행 시퀀스에서 YOLOv8n, YOLO11n, YOLO12n의 예측을 Track 단위로 연결하고, AUC5와 적색 신호 연속 완전 미검출 지속시간 $\bar{D}$를 이용해 합성 열화 조건에서의 시간적 강건성을 비교하였다.
 
-DTLD is provided by Ulm University. Obtain it from the official pages and comply with the dataset terms:
+---
 
-- Dataset page: <https://www.uni-ulm.de/en/in/institute-of-measurement-control-and-microtechnology/research/data-sets/driveu-traffic-light-dataset/>
-- Registration form and terms: <https://www.uni-ulm.de/en/in/institute-of-measurement-control-and-microtechnology/research/data-sets/driveu-traffic-light-dataset/registration-form-dtld/>
-- Official parser: <https://github.com/julimueller/dtld_parsing>
+# 1. 데이터 셋
 
-**Do not commit or redistribute DTLD images or annotations through this repository.** Each user must obtain access from the dataset provider. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+독일 11개 도시의 실주행 영상 데이터셋 DTLD(DriveU Traffic Light Dataset) 활용
+탐지 대상: Red / Yellow / Green / Red-Yellow
+16-bit TIFF 원본을 동일 기준으로 8-bit 단일채널 PNG로 변환
+연속 프레임의 데이터 누수를 방지하기 위해 주행 경로 단위로 Train / Validation / Test 분할
+분할 간 동일 주행 경로 중복 없음
 
-By default, the scripts expect:
+  **Train/Validation/Test**
 
-```text
-data/raw/
-└── DTLD_Labels_v2.0/
-    └── v2.0/
-        └── DTLD_all.json
-```
+> Train : 34 routes / 32,699 images
+> 
+> Validation : 4 routes / 4,035 images
+>
+>Test : 5 routes / 4,244 images
 
-The TIFF files must be available under the root referenced by the paths inside `DTLD_all.json`. If your layout differs, set `DTLD_RAW_ROOT` and `DTLD_LABEL_JSON` explicitly.
+비교 모델 : YOLOv8n · YOLO11n · YOLO12n
+세 모델 모두 동일 데이터 및 학습 조건 적용
+  
+# 2. 문제 제기
 
-## Installation
+**필요성**
 
-Create an isolated Python environment. Install a PyTorch build compatible with your CUDA driver first, then install the pinned project dependencies:
+![Occlusion Surface](https://github.com/seoljaehun/ACK2026.05.22_3D_Shape_Restoration/blob/main/Image_Data/Occlusion%20Surface.PNG)
 
-```bash
-python -m pip install -r requirements.txt
-```
+- 로봇이 물체를 안정적으로 파지하려면 표면 구조와 6D 공간 자세를 반영한 정밀한 3차원 형상 인식이 필수적
+- 실제 환경에서는 단일 카메라 시점에 의존하기 때문에, 가려진 뒷면의 기하 정보 손실이 빈번하게 발생
 
-Training and model-inference scripts require an NVIDIA CUDA GPU and stop when CUDA is unavailable. Dataset inspection and scripts 45, 47, and 48 can run on CPU once their required inputs exist.
+**기존 방식 문제**
 
-Ultralytics 8.4.108 was used for the reported experiment. Exact software settings are recorded in `configs/experiment.yaml` and the files under `results/training_metadata/`.
+![Spectral Bias](https://github.com/seoljaehun/ACK2026.05.22_3D_Shape_Restoration/blob/main/Image_Data/Spectral%20Bias.PNG)
 
-## Portable paths
+- 기존 MLP 기반 딥러닝 모델들은 저주파 성분을 먼저 학습하는 Spectral Bias 특성을 지님
+- 이로 인해 전반적인 형태는 잘 잡지만, 모서리나 굴곡 같은 고주파 세부 기하 구조가 뭉툭하게 표현(Over-smoothing)되는 뚜렷한 한계가 존재
 
-All paths are centralized in `common/project_paths.py`. Defaults remain inside the repository; environment variables can point to data and output locations on any machine.
+# 3. 알고리즘 구조
 
-| Variable | Default | Purpose |
-|---|---|---|
-| `DTLD_RAW_ROOT` | `data/raw` | Registered DTLD download root |
-| `DTLD_LABEL_JSON` | `data/raw/DTLD_Labels_v2.0/v2.0/DTLD_all.json` | DTLD v2 annotation JSON |
-| `DTLD_DATASET_ROOT` | `data/processed/DTLD_YOLO_4class` | Converted YOLO dataset |
-| `DTLD_DEGRADED_ROOT` | `data/processed/DTLD_YOLO_4class_degraded` | Nine degraded test sets |
-| `DTLD_OUTPUT_ROOT` | `outputs` | Training, inference, and analysis outputs |
-| `DTLD_WEIGHTS_ROOT` | `weights` | Optional released `*_best.pt` files |
-| `DTLD_CORRECTED_TEMPORAL_OUTPUT_ROOT` | `outputs/corrected_temporal_analysis` | Script 45 output |
-| `DTLD_CORRECTED_SENSITIVITY_OUTPUT_ROOT` | `outputs/corrected_temporal_analysis/sensitivity` | Script 47 output |
-| `DTLD_SEQUENCE_CLUSTER_OUTPUT_ROOT` | `outputs/sequence_clustered_statistics` | Script 48 final output |
-| `DTLD_CLUSTER_PERMUTATION_ITERATIONS` | `100000` | Two-sided sequence-cluster sign-flip count |
+단일 시점 이미지로부터 보이지 않는 영역을 포함한 전체 3D 형상을 정밀하게 복원
 
-Example, PowerShell:
+![Overall System Process](https://github.com/seoljaehun/ACK2026.05.22_3D_Shape_Restoration/blob/main/Image_Data/Overall%20System%20process_2.png)
 
-```powershell
-$env:DTLD_RAW_ROOT = "<path-to-DTLD>"
-$env:DTLD_LABEL_JSON = "<path-to-DTLD-all-json>"
-$env:DTLD_OUTPUT_ROOT = "<path-to-output-directory>"
-```
+**Feature Extraction**
 
-Example, POSIX shell:
+  - CNN 기반 인코더를 거쳐 물체의 시각적 윤곽을 파악하고 전역/지역 특징을 추출
+  - 이산 웨이블릿 변환(DWT, Level 2)을 통해 이미지의 엣지와 텍스처 등 고주파 성분만을 분해 및 정제
+ 
+**Decoder**
 
-```bash
-export DTLD_RAW_ROOT=/data/DTLD
-export DTLD_LABEL_JSON=/data/DTLD/DTLD_Labels_v2.0/v2.0/DTLD_all.json
-export DTLD_OUTPUT_ROOT=/data/dtld_outputs
-```
+  - 큰 뼈대를 구축하는 Global Decoder와 미세한 디테일을 살리는 Local Decoder가 병렬로 작동
+  - 두 디코더의 결과값을 합산하여 3차원 공간의 점유 확률을 예측하고 최종 3D 메쉬 형상을 생성
 
-## Reproduction workflow
+# 4. 세부 알고리즘 구현
 
-Run commands from the repository root. The numbered filenames show the original experimental order; gaps correspond to exploratory or superseded scripts that were deliberately excluded.
+**Spatial & Frequency Feature Extraction**
 
-### 1. Inspect DTLD and retain the paper split
+  - **Spatial Branch** :
+![Spatial Feature Extraction](https://github.com/seoljaehun/ACK2026.05.22_3D_Shape_Restoration/blob/main/Image_Data/Spatial%20Feature%20Extraction.png)
+    - 잔차 연결을 통해 안정적인 학습이 가능하고 연산 효율이 높은 ResNet-18을 인코더 백본으로 채택
+    - 초기 레이어의 세밀한 시각 패턴(지역 특징)부터 심층 레이어의 전체적인 윤곽까지 단계적으로 통합되어 1D 전역 특징 도축
+    - 각 계층의 중간 레이어에서 다중 스케일의 2D 지역 특징(Local Features)을 추출
+ 
+  - **Frequency Branch** :
+![Frequency Feature Extraction](https://github.com/seoljaehun/ACK2026.05.22_3D_Shape_Restoration/blob/main/Image_Data/Frequency%20Feature%20Extraction.png)
+    - 공간-주파수 국소화 특성이 우수한 Level 2 2D-DWT를 도입하여 이미지를 주파수 대역별로 분해
+    - 저주파 성분(LL)은 배제하고, 미세 표면 굴곡 복원에 집중하기 위해 RGB 채널별 고주파 성분(LH, HL, HH)만을 선택적으로 결합하여 엣지와 텍스처 정보를 추출 및 정제
 
-```bash
-python -m data_preparation.01_inspect_dataset
-python -m data_preparation.02_session_class_summary
-python -m data_preparation.08_check_pixel_range
-```
+**Double Track Decoder**
 
-The exact route-disjoint split used in the paper is already stored in `splits/`. Use those files for strict reproduction. `03_make_split.py` is included to document how the split search was performed, but it writes the manifest files; run it only in a clean copy when auditing split generation:
+  - **Global Decoder** :
+![Global Decoder](https://github.com/seoljaehun/ACK2026.05.22_3D_Shape_Restoration/blob/main/Image_Data/Global%20Decoder.PNG)
+    - 전역 문맥을 반영하여 3D 물체의 전체적인 형태와 기본 뼈대(Baseline)를 구성하는 전역 Logit을 생성
+    - 3D 공간 좌표가 다수의 ResNet 블록을 통과할 때 인코더의 1D 전역 특징을 조건으로 주입하는 CBN을 적용하여, 공간 특징을 전체 형상에 맞게 동적으로 변조
 
-```bash
-python -m data_preparation.03_make_split
-```
 
-### 2. Convert and validate the four-class YOLO dataset
+  - **Local Decoder** :
+![Local Decoder](https://github.com/seoljaehun/ACK2026.05.22_3D_Shape_Restoration/blob/main/Image_Data/Local%20Decoder.PNG)
+    - 주파수 특징이 다층 신경망(MLP)과 시그모이드 함수를 거쳐 포인트 단위의 어텐션 가중치를 산출
+    - 산출된 가중치를 2D 지역 특징에 요소별로 곱하여($\odot$) 형상 복원에 유의미한 미세 표면 굴곡 및 디테일 영역만을 선택적으로 강화
+    - 본 뼈대를 기하학적으로 보완해 줄 고주파수 디테일 잔차로 동작
+   
+**Implicit Occupancy Representation**
 
-```bash
-python -m data_preparation.12_build_full_yolo_dataset
-python -m data_preparation.13_validate_full_dataset
-```
+  - 고정 해상도 제약을 극복하기 위해, 연속적인 3D 공간 좌표($p \in R^3$)의 점유 확률을 학습하는 방식
+  - 전역 위상을 잡는 Global Decoder와 디테일을 가감하는 Local Decoder의 예측값(Logit)을 합산하여 최종 점유 확률을 도출
+ 
+**3D Mesh Reconstruction**
 
-The conversion maps the 16-bit TIFF input to 8-bit single-channel PNG while preserving the four paper classes and route-disjoint manifests.
+  - 최종 결합된 점유 확률 공간 볼륨에 결정 경계를 적용하고, Marching Cubes 알고리즘을 적용하여 정교하고 매끄러운 최종 3D 메쉬를 생성
 
-### 3. Train or provide the three final weights
+# 5. 실험 결과
+제안 모델을 기존 Baseline, 정답 GT와 시각적으로 비교하고, 평가지표를 통해 성능 향상을 정량적으로 입증
 
-To retrain:
+![3D Shape Result](https://github.com/seoljaehun/ACK2026.05.22_3D_Shape_Restoration/blob/main/Image_Data/3D%20Shape%20Result_hori.png)
 
-```bash
-python -m model_training.19_train_yolov8_final
-python -m model_training.20_train_yolo11_final
-python -m model_training.21_train_yolo12_final
-```
+![3D Shape Metrics](https://github.com/seoljaehun/ACK2026.05.22_3D_Shape_Restoration/blob/main/Image_Data/Metrics.PNG)
 
-Alternatively, obtain the three optional GitHub Release assets described in [weights/README.md](weights/README.md) and place them in `weights/`. The main Git repository should not contain the `.pt` files.
+- 단일 전역 특징 기반의 Baseline 모델이 빈 공간을 과도하게 평활화하여 메워버린 반면, 제안 기법은 복잡한 위상 구조의 미세한 디테일과 빈 공간을 성공적으로 복원
+- 표면 간 최소 거리 오차를 나타내는 핵심 지표인 Chamfer Distance(CD)를 0.0192에서 0.0161로 약 16.32% 감소
+- Volumetric IoU와 1% 거리 오차 내 Point Matching F-Score를 각각 1.13%p, 4.90%p 향상
+- Spectral Bias로 인해 학습하기 어려운 고주파 성분까지 정교하게 복원함으로써, 기존 모델의 한계를 극복하고 정밀 작업 적용에 대한 유효성을 입증
 
-### 4. Evaluate clean images and export temporal predictions
+# 6. 결론
 
-```bash
-python -m model_evaluation.22_test_all_models
-python -m model_evaluation.23_analyze_test_sequences
-python -m model_evaluation.24_export_test_predictions
-```
+![Camera Ray](https://github.com/seoljaehun/ACK2026.05.22_3D_Shape_Restoration/blob/main/Image_Data/Camera%20Ray.png)
 
-Predictions are exported from confidence 0.01 so later analyses can apply confidence thresholds of 0.10, 0.25, and 0.50 without rerunning inference.
+- 복잡한 위상 구조의 미세한 디테일을 성공적으로 복원하고 평가지표를 크게 향상시켜 로봇 파지 등 정밀 작업에서의 유효성을 입증
+- 단일 시점 정보 의존으로 인한 깊이 모호성(Depth Ambiguity) 때문에 복원된 객체가 카메라 광선 방향을 따라 길게 늘어지는 현상이 일부 관찰
+- 향후 이러한 기하학적 왜곡을 해결하기 위해 객체의 특징을 여러 직교 평면에 투영하여 다각도로 통합하는 Multi-Plane 표현 방식 기반의 연구를 진행할 계획
 
-### 5. Build, validate, and evaluate the degraded test sets
+---
 
-`32_make_degradation_previews.py` is optional and creates a visual check. The remaining scripts generate and verify all nine degraded sets, run frame-level evaluation, and export temporal predictions.
+# 관련 자료
 
-```bash
-python -m data_preparation.32_make_degradation_previews
-python -m data_preparation.33_build_degraded_test_sets
-python -m data_preparation.34_validate_degraded_test_sets
-python -m model_evaluation.35_evaluate_degraded_test_sets
-python -m model_evaluation.37_export_degraded_temporal_predictions
-```
+- Paper : <https://kiss.kstudy.com/Detail/Ar?key=4254299>
+- Dataset : <https://shapenet.org>, <https://github.com/autonomousvision/occupancy_networks>
+- 참고 문헌 : <https://github.com/seoljaehun/ACK2026.05.22_3D_Shape_Restoration/blob/main/Reference/%EC%B0%B8%EA%B3%A0%EB%AC%B8%ED%97%8C>
 
-### 6. Recalculate the corrected temporal metrics
-
-```bash
-python -m temporal_analysis.45_recalculate_corrected_temporal_metrics
-```
-
-Script 45 applies the paper’s primary definition, including continuous-window coverage and the 2-second maximum gap. Script 25 is retained because script 45 imports its parsing and matching helpers; script 25’s older exploratory window list is **not** the source of the paper’s final 1/2/3-second sensitivity result.
-
-### 7. Run sensitivity analysis
-
-```bash
-python -m temporal_analysis.47_corrected_temporal_sensitivity
-```
-
-Script 47 is the definitive sensitivity analysis for 1-, 2-, and 3-second stable-detection windows, as well as the reported confidence and IoU settings.
-
-### 8. Run the final sequence-clustered inference
-
-```bash
-python -m temporal_analysis.48_sequence_clustered_temporal_statistics
-```
-
-Script 48 is the authoritative paper-level analysis. It clusters tracks by driving sequence, performs 100,000 two-sided sequence-level sign-flip permutations, and applies Holm correction separately within the direct-comparison and Clean-change families for each metric. No confidence interval is computed. The checked-in files under `results/temporal/sequence_clustered/` were produced with those settings.
-
-To make the iteration counts explicit:
-
-```powershell
-$env:DTLD_CLUSTER_PERMUTATION_ITERATIONS = "100000"
-python -m temporal_analysis.48_sequence_clustered_temporal_statistics
-```
-
-```bash
-DTLD_CLUSTER_PERMUTATION_ITERATIONS=100000 \
-python -m temporal_analysis.48_sequence_clustered_temporal_statistics
-```
-
-### 9. Regenerate the paper curve figure
-
-```bash
-python -m visualization.generate_fig4_step_no_ci_svg
-```
-
-## Verify the included statistical artifacts without DTLD
-
-The corrected per-track CSV files are included, so the final statistical stage can be checked without raw images or prediction JSONL files. Write regenerated files to `outputs/` to keep the checked-in reference tables unchanged.
-
-PowerShell:
-
-```powershell
-$env:DTLD_SEQUENCE_CLUSTER_OUTPUT_ROOT = "outputs\sequence_clustered_statistics"
-$env:DTLD_CLUSTER_PERMUTATION_ITERATIONS = "100000"
-python -m temporal_analysis.48_sequence_clustered_temporal_statistics
-```
-
-POSIX shell:
-
-```bash
-DTLD_SEQUENCE_CLUSTER_OUTPUT_ROOT=outputs/sequence_clustered_statistics \
-DTLD_CLUSTER_PERMUTATION_ITERATIONS=100000 \
-python -m temporal_analysis.48_sequence_clustered_temporal_statistics
-```
-
-Compare the four regenerated CSV/JSON files with `results/temporal/sequence_clustered/`.
-
-## Included and intentionally excluded artifacts
-
-Included:
-
-- exact paper split manifests and split summary;
-- source scripts required for data preparation, training, evaluation, corrected temporal analysis, sensitivity analysis, and final clustered inference;
-- compact clean-test, per-track, sensitivity, and sequence-clustered result tables;
-- final training arguments and epoch histories;
-- checksums and placement instructions for optional trained weights.
-
-Intentionally excluded:
-
-- all DTLD files and annotations;
-- converted YOLO images/labels and all nine degraded image sets;
-- per-image/per-frame JSONL predictions and bulky evaluation runs;
-- caches, temporary files, preview exports, logs, and machine-specific paths;
-- intermediate and `last.pt` checkpoints;
-- presentation files, manuscript PDFs, screenshots, and local archives;
-- superseded exploratory scripts 26–31 and 38–44, including the outdated package builder and pre-correction temporal statistics.
-
-These exclusions keep the repository reviewable without removing anything required to understand or rerun the reported pipeline.
-
-## Model weights
-
-The three `best.pt` files are kept outside the Git repository under `release_assets/model_weights/` in the submission package. If redistribution is permitted, attach them to a GitHub Release and verify their SHA-256 values using [weights/README.md](weights/README.md). Do not commit them to the main Git history.
-
-## License status
-
-No open-source license has been selected for this package. A `LICENSE` file is therefore intentionally absent. Before making the repository public, the authors must select a suitable code license and confirm that every distributed artifact, especially trained weights, can be redistributed under the applicable third-party terms. The absence of a license does not grant permission to reuse or redistribute the code beyond applicable law or explicit paper-review arrangements.
-
-## Citation
-
-Use the paper citation once its final bibliographic information is available. `CITATION.cff` contains only the currently known title and author metadata; it does not invent a DOI or repository URL.
+---
