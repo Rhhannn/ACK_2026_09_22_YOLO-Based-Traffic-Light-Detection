@@ -72,7 +72,7 @@
 - YOLOv8n / YOLO11n / YOLO12n을 **동일 조건으로 학습**
 - Clean + 9개 합성 열화 조건에서 **프레임별 추론 수행**
 - 정답 **Track ID와 timestamp**를 이용해 동일 신호등의 예측을 시간순으로 연결
-- Track 단위 시간적 지표 **AUC5 / D̄** 산출
+- Track 단위 시간적 지표 **AUC5 / $\mathbf{\bar{D}}$** 산출
 - 동일 주행 시퀀스 내부의 상관을 고려하여 **통계 비교**
 
 ---
@@ -238,7 +238,7 @@ D_i
 
 - **Nᵣ** : 평가 대상 Red Track의 수
 
-> **D̄ ↓ : 적색 신호의 장시간 연속 완전 미검출이 적음**
+> **$\mathbf{\bar{D}}$ ↓ : 적색 신호의 장시간 연속 완전 미검출이 적음**
 
 > Evaluation : **198 Tracks / 80 sequences**
 
@@ -250,7 +250,7 @@ D_i
 
 ![Clean Baseline](Image_Data/clean_baseline.png)
 
-| Model | mAP50 | mAP50-95 | AUC5 | D̄ (s) |
+| Model | mAP50 | mAP50-95 | AUC5 | $\mathbf{\bar{D}}$ (s) |
 |---|---:|---:|---:|---:|
 | YOLOv8n | 0.750 | 0.478 | 71.56 | 1.011 |
 | YOLO11n | 0.752 | 0.481 | 70.82 | 0.898 |
