@@ -226,7 +226,7 @@ t_{\mathrm{start}}(e)
 
 - **Eᵢ** : i번째 Red Track에서 발생한 연속 완전 미검출 구간의 집합
 
-각 Track에서 얻은 Dᵢ를 전체 Red Track에 대해 평균하여 모델별 대표값 **\mathbf{\bar{D}}**를 산출한다.
+각 Track에서 얻은 Dᵢ를 전체 Red Track에 대해 평균하여 모델별 대표값 $\mathbf{\bar{D}}$를 산출한다.
 
 ```math
 \mathbf{\bar{D}}
@@ -315,9 +315,9 @@ D_i
   - YOLO11n과 다른 두 모델의 차이 모두 통계적으로 유의
 - **Low-light**
   - 모델 간 차이는 통계적으로 유의하지 않음
-- Motion blur L3에서 YOLO12n의 D̄는 **4.011 s**로 세 모델 중 가장 길게 나타남
+- Motion blur L3에서 YOLO12n의 $\mathbf{\bar{D}}$는 **4.011 s**로 세 모델 중 가장 길게 나타남
 
-> D̄의 모델 간 차이는 **열화 종류에 따라 다르게 나타남**
+> $\mathbf{\bar{D}}$의 모델 간 차이는 **열화 종류에 따라 다르게 나타남**
 
 ---
 
@@ -380,7 +380,7 @@ D_i
 - 최고 강도 합성 열화에서는 **YOLO11n의 AUC5가 세 조건 모두 가장 높게 나타남**
 - 적색 신호 연속 완전 미검출 지속시간은 **Fog와 Motion blur에서 YOLO11n이 유의하게 짧음**
 - Low-light에서는 $\mathbf{\bar{D}}$의 모델 간 차이가 통계적으로 유의하지 않음
-- Clean에서 두 시간적 지표가 수치상 가장 양호했던 **YOLO12n이 Motion blur L3에서는 AUC5 최저, D̄ 최장으로 순위 역전**
+- Clean에서 두 시간적 지표가 수치상 가장 양호했던 **YOLO12n이 Motion blur L3에서는 AUC5 최저, $\mathbf{\bar{D}}$ 최장으로 순위 역전**
 
 ### 핵심 결론
 
