@@ -6,7 +6,7 @@
 `paper/stable-detection-onset-curves.svg`는 다음 명령으로 재생성합니다.
 
 ```bash
-python -m scripts.21_generate_onset_curve_figure
+python -m experiments.stage_07_figures.21_plot_stable_detection_onset_curves
 ```
 
 README 그림은 발표 슬라이드와 논문용 원본에서 내보낸 설명 자료이며, DTLD 원본

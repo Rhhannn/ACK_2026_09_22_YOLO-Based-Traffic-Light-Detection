@@ -32,15 +32,15 @@
 
 ```text
 .
-├── common/                      # 경로 및 시간 지표 공통 코드
 ├── configs/                     # 논문 설정과 데이터 경로 예시
 ├── docs/                        # 재현·코드·결과·검증 문서
+├── experiments/                 # stage_01–07, 01–21 실험 파이프라인
 ├── figures/
 │   ├── readme/                  # README 설명 그림
 │   └── paper/                   # 코드로 재생성 가능한 SVG
-├── results/                     # 논문 수치와 검증용 소형 결과
-├── scripts/                     # 01–21 연속 실행 파이프라인
+├── results/                     # 01–05 연구 단계별 소형 결과
 ├── splits/                      # 논문에서 사용한 주행 경로 분할
+├── src/temporal_robustness/     # 경로 및 시간 지표 재사용 코드
 ├── tests/                       # 핵심 계산 회귀 테스트
 └── weights/                     # 공개 가중치 배치 안내
 ```
@@ -81,7 +81,7 @@ CPU 환경에서도 실행할 수 있습니다.
 
 ## 3. 로컬 경로 설정
 
-공통 경로는 `common/project_paths.py`에 있습니다. 기본값은 저장소 내부 상대경로이며
+공통 경로는 `src/temporal_robustness/repository_paths.py`에 있습니다. 기본값은 저장소 내부 상대경로이며
 환경변수로 바꿀 수 있습니다.
 
 | 환경변수 | 기본값 | 용도 |
@@ -113,9 +113,9 @@ $env:DTLD_OUTPUT_ROOT = "<출력-폴더-경로>"
 ### 4.1 데이터 점검과 분할
 
 ```bash
-python -m scripts.01_inspect_dtld_dataset
-python -m scripts.02_summarize_routes_and_classes
-python -m scripts.04_audit_tiff_pixel_range
+python -m experiments.stage_01_dataset_and_split.01_inspect_dtld_annotations
+python -m experiments.stage_01_dataset_and_split.02_summarize_route_class_distribution
+python -m experiments.stage_01_dataset_and_split.04_audit_tiff_pixel_range
 ```
 
 논문 수치의 정확한 재현에는 포함된 `splits/`를 그대로 사용하십시오. 분할 탐색
@@ -123,22 +123,22 @@ python -m scripts.04_audit_tiff_pixel_range
 다시 씁니다.
 
 ```bash
-python -m scripts.03_recreate_route_disjoint_split
+python -m experiments.stage_01_dataset_and_split.03_create_route_disjoint_split
 ```
 
 ### 4.2 YOLO 데이터셋 변환과 검증
 
 ```bash
-python -m scripts.05_convert_dtld_to_yolo
-python -m scripts.06_validate_yolo_dataset
+python -m experiments.stage_01_dataset_and_split.05_convert_dtld_to_yolo
+python -m experiments.stage_01_dataset_and_split.06_validate_yolo_dataset
 ```
 
 ### 4.3 세 모델 학습
 
 ```bash
-python -m scripts.07_train_yolov8n
-python -m scripts.08_train_yolo11n
-python -m scripts.09_train_yolo12n
+python -m experiments.stage_02_model_training.07_train_yolov8n
+python -m experiments.stage_02_model_training.08_train_yolo11n
+python -m experiments.stage_02_model_training.09_train_yolo12n
 ```
 
 재학습하지 않는 경우 [`weights/README.md`](../weights/README.md)에 적힌 가중치를
@@ -147,9 +147,9 @@ python -m scripts.09_train_yolo12n
 ### 4.4 Clean 평가와 예측 내보내기
 
 ```bash
-python -m scripts.10_evaluate_clean_models
-python -m scripts.11_audit_test_sequences
-python -m scripts.12_export_clean_predictions
+python -m experiments.stage_03_clean_baseline.10_evaluate_clean_baseline
+python -m experiments.stage_03_clean_baseline.11_audit_clean_test_sequences
+python -m experiments.stage_03_clean_baseline.12_export_clean_frame_predictions
 ```
 
 민감도 분석에서 모델을 다시 실행하지 않도록 예측은 confidence 0.01부터 저장합니다.
@@ -157,11 +157,11 @@ python -m scripts.12_export_clean_predictions
 ### 4.5 합성 열화 생성·검증·평가
 
 ```bash
-python -m scripts.13_preview_synthetic_degradations
-python -m scripts.14_build_degraded_test_sets
-python -m scripts.15_validate_degraded_test_sets
-python -m scripts.16_evaluate_degraded_models
-python -m scripts.17_export_degraded_predictions
+python -m experiments.stage_04_synthetic_degradation.13_preview_synthetic_degradation_levels
+python -m experiments.stage_04_synthetic_degradation.14_generate_degraded_test_sets
+python -m experiments.stage_04_synthetic_degradation.15_validate_degraded_test_sets
+python -m experiments.stage_04_synthetic_degradation.16_evaluate_degraded_conditions
+python -m experiments.stage_04_synthetic_degradation.17_export_degraded_frame_predictions
 ```
 
 13번은 육안 점검용 선택 단계입니다. 나머지 단계는 9개 열화 test set을 생성·검증하고
@@ -170,8 +170,8 @@ python -m scripts.17_export_degraded_predictions
 ### 4.6 시간 지표와 민감도
 
 ```bash
-python -m scripts.18_compute_temporal_metrics
-python -m scripts.19_run_sensitivity_analysis
+python -m experiments.stage_05_temporal_robustness.18_compute_auc5_and_red_miss_duration
+python -m experiments.stage_05_temporal_robustness.19_run_temporal_metric_sensitivity_analysis
 ```
 
 18번은 연속 관측 구간과 최대 2초 간격을 포함한 논문 최종 정의를 적용합니다.
@@ -180,8 +180,8 @@ python -m scripts.19_run_sensitivity_analysis
 ### 4.7 최종 통계와 그림
 
 ```bash
-python -m scripts.20_run_sequence_clustered_statistics
-python -m scripts.21_generate_onset_curve_figure
+python -m experiments.stage_06_statistical_validation.20_run_sequence_clustered_sign_flip_tests
+python -m experiments.stage_07_figures.21_plot_stable_detection_onset_curves
 ```
 
 20번은 동일 주행 시퀀스에 속한 Track을 하나의 군집으로 처리하고, 양측 부호반전
@@ -192,22 +192,22 @@ python -m scripts.21_generate_onset_curve_figure
 ### 회귀 테스트
 
 ```bash
-python -m unittest tests.test_core_metrics
+python -m unittest tests.test_temporal_metrics_and_degradation
 ```
 
 ### 최종 통계 재계산
 
 보정된 Track별 CSV가 포함되어 있어 DTLD와 대용량 예측 JSONL 없이 20번 통계를
-다시 실행할 수 있습니다. 기본 입력 파일이 없으면 `results/temporal/track_metrics/`
+다시 실행할 수 있습니다. 기본 입력 파일이 없으면 `results/03_temporal_robustness/track_level/`
 를 자동으로 사용합니다.
 
 ```powershell
 $env:DTLD_SEQUENCE_CLUSTER_OUTPUT_ROOT = "outputs\sequence_clustered_statistics"
 $env:DTLD_CLUSTER_PERMUTATION_ITERATIONS = "100000"
-python -m scripts.20_run_sequence_clustered_statistics
+python -m experiments.stage_06_statistical_validation.20_run_sequence_clustered_sign_flip_tests
 ```
 
-생성된 네 파일을 `results/temporal/sequence_clustered/`의 기준 파일과 비교하십시오.
+생성된 네 파일을 `results/05_statistical_validation/`의 대응 기준 파일과 비교하십시오.
 
 ## 6. 포함·제외 범위
 

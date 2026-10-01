@@ -21,7 +21,7 @@ Annual Conference of KIPS 2026
 
 본 연구에서는 DTLD 주행 시퀀스에서 YOLOv8n, YOLO11n, YOLO12n의 예측을 Track 단위로 연결하고, **AUC5**와 $\mathbf{\bar{D}}$를 이용하여 합성 열화 조건에서의 시간적 강건성을 비교하였다.
 
-공개 코드는 [`scripts/`](scripts/)의 `01–21` 연속 파이프라인으로 정리되어 있으며,
+공개 코드는 [`experiments/`](experiments/)의 7개 연구 단계와 `01–21` 연속 파이프라인으로 정리되어 있으며,
 논문 주장과 실제 CSV·JSON의 대응은 [결과 파일 안내](docs/RESULTS_GUIDE.md)에서 바로
 확인할 수 있다.
 

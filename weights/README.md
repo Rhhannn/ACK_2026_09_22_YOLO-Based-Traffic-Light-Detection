@@ -17,7 +17,7 @@ weights/
 └── yolo12n_best.pt
 ```
 
-`common/project_paths.py` first looks for these filenames in `DTLD_WEIGHTS_ROOT` (this directory by default). If a released file is absent, it falls back to the corresponding locally trained `outputs/full_training/<model>_final/weights/best.pt`.
+`src/temporal_robustness/repository_paths.py` first looks for these filenames in `DTLD_WEIGHTS_ROOT` (this directory by default). If a released file is absent, it falls back to the corresponding locally trained `outputs/full_training/<model>_final/weights/best.pt`.
 
 Verify on PowerShell:
 

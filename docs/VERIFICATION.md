@@ -1,32 +1,32 @@
 # 패키지 검증 기록
 
-최종 구조 정리 후 2026-09-30에 다음 검증을 수행했습니다.
+최종 구조 정리 후 2026-10-01에 다음 검증을 수행했습니다.
 
 ## 자동 검증 결과
 
 | 검증 | 결과 |
 |---|---|
-| 전체 Python 파일 AST 문법 검사 | 26개 파일 통과 |
-| `tests/test_core_metrics.py` 회귀 테스트 | 5개 통과 |
-| 로컬 Markdown 링크·이미지 경로 | 59개 확인, 누락 0개 |
+| 전체 Python 파일 AST 문법 검사 | 34개 파일 통과 |
+| `tests/test_temporal_metrics_and_degradation.py` 회귀 테스트 | 5개 통과 |
+| 로컬 Markdown 링크·이미지 경로 | 64개 확인, 누락 0개 |
 | 20번 시퀀스 군집 통계 재계산 | 포함된 CSV/JSON 4개와 SHA-256 완전 일치 |
 | 21번 onset curve SVG 재생성 | 포함된 SVG와 SHA-256 완전 일치 |
-| 저장소 manifest | Git 표준 내용 77개와 SHA-256 일치 |
+| 저장소 manifest | Git 표준 내용 86개와 SHA-256 일치 |
 | 부호반전 반복 수 | 검정당 100,000회 |
 
 통계 재계산에서 일치한 파일:
 
-- `sequence_cluster_condition_summary.csv`
-- `pairwise_sequence_cluster_tests.csv`
-- `degradation_vs_clean_change_tests.csv`
-- `sequence_cluster_statistics.json`
+- `condition_level_sequence_summary.csv`
+- `pairwise_model_sign_flip_tests.csv`
+- `degradation_vs_clean_change_sign_flip_tests.csv`
+- `sequence_clustered_statistics_full_results.json`
 
 ## 실행 명령
 
 ### 회귀 테스트
 
 ```bash
-python -m unittest tests.test_core_metrics -v
+python -m unittest tests.test_temporal_metrics_and_degradation -v
 ```
 
 ### 원자료 없는 최종 통계 재계산
@@ -34,16 +34,16 @@ python -m unittest tests.test_core_metrics -v
 ```powershell
 $env:DTLD_SEQUENCE_CLUSTER_OUTPUT_ROOT = "outputs\verification_sequence_clustered"
 $env:DTLD_CLUSTER_PERMUTATION_ITERATIONS = "100000"
-python -m scripts.20_run_sequence_clustered_statistics
+python -m experiments.stage_06_statistical_validation.20_run_sequence_clustered_sign_flip_tests
 ```
 
-생성된 네 파일의 SHA-256을 `results/temporal/sequence_clustered/`의 동명 파일과
+생성된 네 파일의 SHA-256을 `results/05_statistical_validation/`의 동명 파일과
 비교했습니다.
 
 ### 문법 검사 범위
 
-- `common/`
-- `scripts/`
+- `src/`
+- `experiments/`
 - `tests/`
 
 ## 검증 범위의 한계
