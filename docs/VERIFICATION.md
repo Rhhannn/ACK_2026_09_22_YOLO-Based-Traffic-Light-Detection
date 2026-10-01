@@ -8,10 +8,10 @@
 |---|---|
 | 전체 Python 파일 AST 문법 검사 | 34개 파일 통과 |
 | `tests/test_temporal_metrics_and_degradation.py` 회귀 테스트 | 5개 통과 |
-| 로컬 Markdown 링크·이미지 경로 | 64개 확인, 누락 0개 |
+| 로컬 Markdown 링크·이미지 경로 | 49개 확인, 누락 0개 |
 | 20번 시퀀스 군집 통계 재계산 | 포함된 CSV/JSON 4개와 SHA-256 완전 일치 |
 | 21번 onset curve SVG 재생성 | 포함된 SVG와 SHA-256 완전 일치 |
-| 저장소 manifest | Git 표준 내용 86개와 SHA-256 일치 |
+| 저장소 manifest | Git 표준 내용 96개와 SHA-256 일치 |
 | 부호반전 반복 수 | 검정당 100,000회 |
 
 통계 재계산에서 일치한 파일:

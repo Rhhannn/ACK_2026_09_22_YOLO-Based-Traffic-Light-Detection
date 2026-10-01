@@ -1,29 +1,18 @@
-# 합성 열화 조건에서 YOLO 기반 신호등 탐지의 시간적 강건성 평가
+# 🥇 ACK2026.09.22_YOLO_Traffic_Light_Temporal_Robustness
 
-**Temporal Robustness Evaluation of YOLO-Based Traffic Light Detection under Synthetic Degradations**
+---
 
-최승범 · 설재훈 · 김동현 · 김재원 · 오준석 · 김영균<br>
-Annual Conference of KIPS 2026
+### Temporal Robustness Evaluation of YOLO-Based Traffic Light Detection under Synthetic Degradations
 
-[전체 재현](docs/REPRODUCTION.md) · [코드 지도](docs/CODE_MAP.md) ·
-[결과 파일 안내](docs/RESULTS_GUIDE.md) · [검증 기록](docs/VERIFICATION.md) ·
-[참고문헌](docs/REFERENCES.md)
+-저자: 최승범, 설재훈, 김동현, 김재원, 오준석, 김영균
 
-| 항목 | 내용 |
-|---|---|
-| 연구 질문 | Clean mAP가 유사한 모델도 합성 열화 시퀀스에서 서로 다른 시간적 강건성을 보이는가? |
-| 데이터·모델 | DTLD · YOLOv8n · YOLO11n · YOLO12n |
-| 열화 조건 | Fog · Low-light · Motion blur, 각 L1–L3 |
-| 시간 지표 | 안정 탐지 개시 AUC5 ↑ · 적색 완전 미검출 지속시간 D̄ ↓ |
-| 핵심 결과 | 세 L3 조건에서 YOLO11n의 AUC5가 가장 높았고, 민감도 설정 21/21에서 수치상 1위를 유지 |
+
+- 비교 모델: **YOLOv8n, YOLO11n, YOLO12n**
+- 데이터셋: **DTLD (DriveU Traffic Light Dataset)**
 
 기존 객체 탐지 평가는 주로 Precision, Recall, mAP와 같은 **프레임 단위 지표**에 의존한다. 그러나 연속 주행 환경에서는 신호등을 얼마나 이른 시점부터 안정적으로 탐지하는지와, 중요한 적색 신호를 얼마나 오래 연속으로 놓치는지도 중요하다.
 
 본 연구에서는 DTLD 주행 시퀀스에서 YOLOv8n, YOLO11n, YOLO12n의 예측을 Track 단위로 연결하고, **AUC5**와 $\mathbf{\bar{D}}$를 이용하여 합성 열화 조건에서의 시간적 강건성을 비교하였다.
-
-공개 코드는 [`experiments/`](experiments/)의 7개 연구 단계와 `01–21` 연속 파이프라인으로 정리되어 있으며,
-논문 주장과 실제 CSV·JSON의 대응은 [결과 파일 안내](docs/RESULTS_GUIDE.md)에서 바로
-확인할 수 있다.
 
 ---
 
@@ -31,7 +20,7 @@ Annual Conference of KIPS 2026
 
 독일 11개 도시의 실주행 환경에서 수집된 **DTLD (DriveU Traffic Light Dataset)** 활용
 
-![DTLD Signal States](figures/readme/dtld-signal-states.png)
+![DTLD Signal States](Image_Data/DTLD_signal_states.png)
 
 - 탐지 대상: **Red / Yellow / Green / Red-Yellow**
 - 원본 영상: **2048 × 1024, 16-bit TIFF**
@@ -59,7 +48,7 @@ Annual Conference of KIPS 2026
 
 ## 기존 프레임 단위 평가의 한계
 
-![Temporal Limitation](figures/readme/frame-metric-limitations.png)
+![Temporal Limitation](Image_Data/temporal_limitation.png)
 
 - Precision, Recall, mAP는 **프레임별 탐지 결과를 전체 데이터에서 집계**
 - 전체 탐지 성공 횟수가 같더라도 **안정 탐지가 시작되는 시점은 다를 수 있음**
@@ -76,7 +65,7 @@ Annual Conference of KIPS 2026
 
 동일 조건에서 학습된 세 YOLO 모델을 Clean 및 합성 열화 환경에서 평가하고, 프레임별 예측을 Track 단위 시계열로 재구성하여 시간적 성능을 비교
 
-![Study Overview](figures/readme/study-overview.png)
+![Study Overview](Image_Data/study_overview.png)
 
 ## 전체 평가 절차
 
@@ -90,7 +79,7 @@ Annual Conference of KIPS 2026
 
 ## Synthetic Degradation
 
-![Synthetic Degradation Conditions](figures/readme/synthetic-degradation-conditions.png)
+![Synthetic Degradation Conditions](Image_Data/degradation_conditions.png)
 
 원본 Test 영상에 **Fog / Low-light / Motion blur**를 각각 3단계로 적용하였다.
 
@@ -163,7 +152,7 @@ I_{\mathrm{blur}}=I*h_k
 
 ## 4.1 Stable-Detection Onset — AUC5
 
-![AUC5 Definition](figures/readme/auc5-definition.png)
+![AUC5 Definition](Image_Data/auc5_definition.png)
 
 ### Frame-level Detection Success
 
@@ -213,7 +202,7 @@ F(t)\,dt
 
 ## 4.2 Complete Red-Miss Duration — D̄
 
-![Red Miss Duration](figures/readme/red-miss-duration-definition.png)
+![Red Miss Duration](Image_Data/red_miss_duration.png)
 
 ### Complete Red-Miss
 
@@ -259,7 +248,7 @@ D_i
 
 ## 5.1 Clean Baseline Performance
 
-![Clean Baseline](figures/readme/clean-baseline-results.png)
+![Clean Baseline](Image_Data/clean_baseline.png)
 
 | Model | mAP50 | mAP50-95 | AUC5 | D̄ (s) |
 |---|---:|---:|---:|---:|
@@ -278,7 +267,7 @@ D_i
 
 ## 5.2 Stable-Detection Onset Curves
 
-![Stable Detection Onset Curves](figures/readme/stable-onset-curves.png)
+![Stable Detection Onset Curves](Image_Data/stable_detection_onset_curves.png)
 
 - 각 열화의 최고 강도인 **L3 조건**에서 누적 안정 탐지 개시 곡선 비교
 - 곡선이 **높고 빠르게 상승할수록** 더 많은 Track에서 조기에 안정 탐지가 개시
@@ -291,7 +280,7 @@ D_i
 
 ## 5.3 L3 AUC5 Comparison
 
-![L3 AUC5 Comparison](figures/readme/l3-auc5-comparison.png)
+![L3 AUC5 Comparison](Image_Data/l3_auc5.png)
 
 | Condition | YOLOv8n | YOLO11n | YOLO12n |
 |---|---:|---:|---:|
@@ -313,7 +302,7 @@ D_i
 
 ## 5.4 L3 Red-Miss Duration Comparison
 
-![L3 Red-Miss Comparison](figures/readme/l3-red-miss-comparison.png)
+![L3 Red-Miss Comparison](Image_Data/l3_red_miss.png)
 
 | Condition | YOLOv8n | YOLO11n | YOLO12n |
 |---|---:|---:|---:|
@@ -413,16 +402,9 @@ D_i
 
 ---
 
-# 저장소 이용 안내
+# 관련 자료
 
-- [전체 설치·재현 절차](docs/REPRODUCTION.md)
-- [01–21 코드와 논문 단계의 대응](docs/CODE_MAP.md)
-- [논문 주장과 결과 파일의 대응](docs/RESULTS_GUIDE.md)
-- [패키지 검증 기록](docs/VERIFICATION.md)
-- [DTLD 공식 페이지](https://www.uni-ulm.de/en/in/institute-of-measurement-control-and-microtechnology/research/data-sets/driveu-traffic-light-dataset/)
-- [참고문헌](docs/REFERENCES.md)
-- [인용 정보](CITATION.cff)
+- Dataset : <https://www.uni-ulm.de/en/in/iui-drive-u/projekte/driveu-traffic-light-dataset/>
+- 참고 문헌 : <https://github.com/Rhhannn/YOLO-Based-Traffic-Light-Detection/blob/main/Reference/참고문헌.md>
 
-DTLD 원자료와 파생 대용량 데이터는 재배포하지 않는다. 제3자 이용 조건은
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), 현재 코드 라이선스 상태는
-[docs/LICENSE_STATUS.md](docs/LICENSE_STATUS.md)를 확인한다.
+---
