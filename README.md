@@ -226,10 +226,10 @@ t_{\mathrm{start}}(e)
 
 - **Eᵢ** : i번째 Red Track에서 발생한 연속 완전 미검출 구간의 집합
 
-각 Track에서 얻은 Dᵢ를 전체 Red Track에 대해 평균하여 모델별 대표값 **$\mathbf{\bar{D}}$**를 산출한다.
+각 Track에서 얻은 Dᵢ를 전체 Red Track에 대해 평균하여 모델별 대표값 **\mathbf{\bar{D}}**를 산출한다.
 
 ```math
-$\mathbf{\bar{D}}$
+\mathbf{\bar{D}}
 =
 \frac{1}{N_R}
 \sum_{i=1}^{N_R}
